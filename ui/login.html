@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,56 +66,41 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   </head>
   <body>
 
+<section class="vh-100 gradient-custom">
+  <div class="container pt-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-light text-dark" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
-  <div class="container-fluid">
-    <a class="navbar-brand " href="#">Nama PT</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Beranda</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        Admin
-      </span>
+            <div class="mt-md-4 pb-4">
+
+              <h2 class="fw-bolder mb-2 text-uppercase">Masuk</h2>
+              <!--p class="text-muted fw-light mb-2">Masukan ID dan Password.</p-->
+			  
+			  <hr class="pb-2"/>
+
+              <div class="form-outline form-white mb-2">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                <label class="form-label" for="typeEmailX">ID</label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                <label class="form-label" for="typePasswordX">Password</label>
+              </div>
+
+              <button class="btn btn-success btn-lg px-5" type="submit">Kirim</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
+</section>
 
-
-	<div class="container row px-5">
-		<div class="col-7 px-5 align-self-center">
-		  	<div class="container mt-5">
-				<h1 class="mb-3 fw-bold">Lorem Ipsum</h1>
-
-				<form action="latihan1_go.php" method="post">
-				  
-				  <div class="form-group mb-3">
-					<label for="exampleFormControlSelect1" class="mb-1">Lorem Ipsum Sir Amit</label>
-					<input name="nama" type="text" class="form-control" id="exampleInputPassword1">
-				  </div>
-				  <button type="submit" class="btn btn-success">Kirim</button>
-				</form>				
-				
-			</div>
-		</div>
-		<div class="col-5">
-		  <img class="mt-5" width="700px" src="img/main.png"/>
-		</div>
-	</div>
-	
 	
   </body>
 </html>
