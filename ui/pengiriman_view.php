@@ -97,8 +97,13 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<tr>
 					  <th>ID</th>
 					  <th>No Resi</th>
-					  <th>Nama Gudang</th>
+					  <th>Nama Pengirim</th>
+					  <th>Nama Penerima</th>
+					  <th>Alamat</th>
+					  <th>Jumlah</th>
+					  <th>Berat</th>
 					  <th>Nama Kurir</th>
+					  <th>Lokasi Terakhir</th>
 					  <th>Tanggal diperbarui</th>
 					  <th>Actions</th>
 					</tr>
@@ -110,48 +115,9 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td>Awaiting</td>
 					  <td>Senior</td>
 					  <td>Senior</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
 					  <td>Senior</td>
 					  <td>Senior</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
 					  <td>Senior</td>
-					  <td>Senior</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Senior</td>
-					  <td>Senior</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
 					  <td>Senior</td>
 					  <td>Senior</td>
 					  <td>
