@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pengiriman View</title>
+    <title>Laporan View</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,82 +85,63 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 		  <section class="mb-4">
 			<div class="card">
 			  <div class="card-header py-3">
-				<h5 class="mb-0"><strong>Pengiriman</strong></h5>
+				<h5 class="mb-0"><strong>Laporan</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
-				  <button class="btn btn-success fw-bold" type="button">Tambah Pengiriman</button>
-				</div>
 				
 				<table class="table align-middle mb-0 bg-white">
 				  <thead class="bg-light">
 					<tr>
+					  <th></th>
 					  <th>No Resi</th>
 					  <th>Nama Pengirim</th>
-					  <th>Nama Penerima</th>
-					  <th>Alamat</th>
-					  <th>Lokasi Terakhir</th>
+					  <th>Status Pengiriman</th>
 					  <th>Tanggal diperbarui</th>
 					  <th>Actions</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<tr>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal"><a href="#">AB00001</a></td>
+					  <td><input type="checkbox"/></td>
+					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00001</td>
 					  <td>Andi</td>
-					  <td>Budi</td>
-					  <td>Jl. Cinta raya no 3, Sumatera Barat</td>
-					  <td>Banten</td>
+					  <td>Ongoing</td>
 					  <td>20-05-2023</td>
 					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
+						<span class="fw-bold me-2 text-secondary">Print</span>
+					  </td>
+					</tr>
+					<tr>
+					  <td><input type="checkbox"/></td>
+					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00002</td>
+					  <td>Budi</td>
+					  <td>Ongoing</td>
+					  <td>20-05-2023</td>
+					  <td>
+						<span class="fw-bold me-2 text-secondary">Print</span>
+					  </td>
+					</tr>
+					<tr>
+					  <td><input type="checkbox"/></td>
+					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00003</td>
+					  <td>Cinta</td>
+					  <td>Ongoing</td>
+					  <td>20-05-2023</td>
+					  <td>
+						<span class="fw-bold me-2 text-secondary">Print</span>
 					  </td>
 					</tr>
 				  </tbody>
 				</table>	
-				
-				
+
+				<div class="d-grid gap-2 mt-2 d-md-flex justify-content-md-start">
+				  <button class="btn btn-success fw-bold" type="button">Print Laporan Yang Dicentang</button>
+				</div>
+					
 			  </div>
 			</div>
 		  </section>
 	  <!-- Section: Main chart -->
-	  
-		  
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">AB00001</h5>
-			<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-		  </div>
-		  <div class="modal-body">
-				
-				<table class="table align-middle mb-0 bg-white">
-				  <tbody>
-					<tr>
-					  <td>Jumlah</td>
-					  <td>: 50 pcs</td>
-					</tr>
-					<tr>
-					  <td>Berat</td>
-					  <td>: 2 KG</td>
-					</tr>
-					<tr>
-					  <td>Total</td>
-					  <td>: Rp 50.000</td>
-					</tr>
-				  </tbody>
-				</table>	
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Close</button>
-		  </div>
-		</div>
-	  </div>
-	</div>
 	
     </div>
   </main>
