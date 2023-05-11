@@ -133,13 +133,17 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">AB00001</h5>
+			<h5 class="modal-title" id="exampleModalLabel">Detail AB00001</h5>
 			<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">
 				
 				<table class="table align-middle mb-0 bg-white">
 				  <tbody>
+					<tr>
+					  <td>Harga</td>
+					  <td>Rp 1.000</td>
+					</tr>
 					<tr>
 					  <td>Jumlah</td>
 					  <td>: 50 pcs</td>
@@ -148,7 +152,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td>Berat</td>
 					  <td>: 2 KG</td>
 					</tr>
-					<tr>
+					<tr class="bg-light">
 					  <td>Total</td>
 					  <td>: Rp 50.000</td>
 					</tr>

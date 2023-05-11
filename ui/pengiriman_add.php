@@ -92,12 +92,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<input type="text" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">ID</label>
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">Nomor Resi</label>
 				  </div>
 
@@ -111,6 +105,42 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <div class="form-outline mb-4">
 					<input type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">Nama Kurir</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Nama Pengirim</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Nama Penerima</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Alamat Penerima</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Jumlah</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Berat</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Harga</label>
 				  </div>
 
 				  <!-- Submit button -->
