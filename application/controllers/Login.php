@@ -17,11 +17,9 @@ class login extends CI_Controller {
 	public function login_go()
 	{		
 		$id = $this->input->post('id');
-		$password = md5($this->input->post('password'));
+		$password = md5($this->input->post('password')); //enkripsi md5
 		
 		//cek akun
 		$this->login_model->cek_akun($id, $password);
-
-		// $this->load->view('login');
 	}
 }
