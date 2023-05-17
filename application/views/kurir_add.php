@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>Kurir Add</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,81 +71,58 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 <body>
   <!--Main Navigation-->
   <header>
-    <?php $this->load->view('component/sidebar.php');?>
+    <?php include_once('component/sidebar.php'); ?>
 
-    <?php $this->load->view('component/navbar.php');?>	
+    <?php include_once('component/navbar.php'); ?>	
   </header>
   <!--Main Navigation-->
 
   <!--Main layout-->
   <main style="margin-top: 58px">
     <div class="container pt-4">
-      <!--Section: Minimal statistics cards-->
-      <section>
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between px-md-1">
-                  <div>
-                    <h3 class="text-danger">278</h3>
-                    <p class="mb-0">Pengiriman</p>
-                  </div>
-                  <div class="align-self-center">
-                    <i class="fas fa-truck text-danger fa-3x"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between px-md-1">
-                  <div>
-                    <h3 class="text-success">156</h3>
-                    <p class="mb-0">Kurir</p>
-                  </div>
-                  <div class="align-self-center">
-                    <i class="fas fa-motorcycle text-success fa-3x"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between px-md-1">
-                  <div>
-                    <h3 class="text-warning">999</h3>
-                    <p class="mb-0">Pelanggan</p>
-                  </div>
-                  <div class="align-self-center">
-                    <i class="fas fa-user text-warning fa-3x"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 col-12 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between px-md-1">
-                  <div>
-                    <h3 class="text-info">423</h3>
-                    <p class="mb-0">Gudang</p>
-                  </div>
-                  <div class="align-self-center">
-                    <i class="fas fa-box text-info fa-3x"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--Section: Minimal statistics cards-->
+	<form action="<?=site_url('kurir/add_go')?>" method="post">
+	 <!-- Section: Main chart -->
+		  <section class="mb-4">
+			<div class="card">
+			  <div class="card-header py-3">
+				<h5 class="mb-0"><strong>Tambah Kurir</strong></h5>
+			  </div>
+			  <div class="card-body">
+				<form>
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="id_kurir" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">ID</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="nama_kurir" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Nama</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="merek_kendaraan" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Merk Kendaraan</label>
+				  </div>
+
+				  <!-- input -->
+				  <div name="telpon" class="form-outline mb-4">
+					<input name="no_telpon" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">No Telpon</label>
+				  </div>
+
+				  <!-- Submit button -->
+				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>
+				</form>				
+				
+			  </div>
+			</div>
+		  </section>
+	  <!-- Section: Main chart -->
+	  </form>
+	
     </div>
   </main>
   <!--Main layout-->
@@ -155,9 +132,9 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!-- Custom scripts -->
   <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
   
-  <script>  
-	menyalakan_sidenav('<?=$sidebar?>');
-  </script>
+  	<script>  
+		menyalakan_sidenav('<?=$sidebar?>');
+	</script>
 </body>
 
 </html>

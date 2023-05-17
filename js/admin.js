@@ -1,3 +1,7 @@
+function menyalakan_sidenav(id){
+	document.getElementById(id).classList.add("active");  
+}
+
 // Graph
 var ctx = document.getElementById("myChart");
 

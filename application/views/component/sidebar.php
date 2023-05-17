@@ -2,10 +2,10 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
       <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple" id="dashboard">
+          <a href="<?=site_url('admin')?>" class="list-group-item list-group-item-action py-2 ripple" id="dashboard">
             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
           </a>
-          <a href="kurir_view.php" class="list-group-item list-group-item-action py-2 ripple" id="kurir">
+          <a href="<?=site_url('kurir')?>" class="list-group-item list-group-item-action py-2 ripple" id="kurir">
             <i class="fas fa-motorcycle fa-fw me-3"></i><span>Kurir </span>
           </a>
           <a href="gudang_view.php" class="list-group-item list-group-item-action py-2 ripple" id="gudang"><i
