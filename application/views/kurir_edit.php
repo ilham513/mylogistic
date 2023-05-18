@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kurir View</title>
+    <title>Kurir Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,54 +80,47 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
   <main style="margin-top: 58px">
     <div class="container pt-4">
-
+	<form action="<?=site_url('kurir/add_go')?>" method="post">
 	 <!-- Section: Main chart -->
 		  <section class="mb-4">
 			<div class="card">
 			  <div class="card-header py-3">
-				<h5 class="mb-0"><strong>Kurir</strong></h5>
+				<h5 class="mb-0"><strong>Edit Kurir</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
-				  <a href="<?=site_url('kurir/add')?>"><button class="btn btn-success fw-bold" type="button">Tambah Kurir</button></a>
-				</div>
-				
-				<table class="table align-middle mb-0 bg-white">
-				  <thead class="bg-light">
-					<tr>
-					  <th>ID</th>
-					  <th>Nama</th>
-					  <th>Merk Kendaraan</th>
-					  <th>No Telpon</th>
-					  <th>Actions</th>
-					</tr>
-				  </thead>
-				  <tbody>
-				  <?php foreach($array_kurir as $kurir): ?>
-					<tr>
-					  <td><?= $kurir->id_kurir ?></td>
-					  <td><?= $kurir->nama_kurir ?></td>
-					  <td><?= $kurir->merek_kendaraan ?></td>
-					  <td><?= $kurir->no_telpon ?></td>
-					  <td>
-						<a href="<?=site_url('kurir/edit/'.$kurir->id_kurir)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-						<a href="<?=site_url('kurir/hapus/'.$kurir->id_kurir)?>"><span class="fw-bold text-danger">HAPUS</span></a>
-					  </td>
-					</tr>
-					<?php endforeach; ?>
-				  </tbody>
-				</table>	
-				
+				<form>
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="nama_kurir" type="text" value="<?=$obj_kurir->nama_kurir?>" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Nama</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="merek_kendaraan" type="text" value="<?=$obj_kurir->merek_kendaraan?>" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Merk Kendaraan</label>
+				  </div>
+
+				  <!-- input -->
+				  <div name="telpon" class="form-outline mb-4">
+					<input name="no_telpon" type="text" value="<?=$obj_kurir->no_telpon?>" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">No Telpon</label>
+				  </div>
+
+				  <!-- Submit button -->
+				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>
+				</form>				
 				
 			  </div>
 			</div>
 		  </section>
 	  <!-- Section: Main chart -->
+	  </form>
 	
     </div>
   </main>
   <!--Main layout-->
-  
+
   <!-- MDB -->
   <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
@@ -136,7 +129,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
 	</script>
-
 </body>
 
 </html>

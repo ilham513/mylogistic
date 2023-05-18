@@ -8,6 +8,7 @@ class Kurir extends CI_Controller {
 		parent::__construct();
 		//model
 		$this->load->model('login_model');
+		$this->load->model('crud_model');
 		
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
@@ -18,6 +19,9 @@ class Kurir extends CI_Controller {
 	{
 		$data['nama'] = $this->data['nama'];
 		$data['sidebar'] = $this->data['sidebar'];
+		
+		//ambil data
+		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
 		
 		$this->load->view('kurir_view',$data);
 	}
@@ -32,17 +36,19 @@ class Kurir extends CI_Controller {
 
 	public function add_go()
 	{
-		$data = array(
-			'k1' => $this->input->post('k1'),
-			'k2' => $this->input->post('k2')		
-		);
-	
-		$this->db->insert('kuesioner', $data);
-	
-
-		//redirect
-		echo '<script>alert("Data berhasil Diinput!")</script>';
-		redirect('/alumni/crud_kuesioner', 'refresh'); //redir		
-		var_dump($_POST);
+		$this->crud_model->masukan_data('kurir');
 	}
+	
+	public function edit($id)
+	{
+		$data['nama'] = $this->data['nama'];
+		$data['sidebar'] = $this->data['sidebar'];
+		
+		$data['array_kurir'] = $this->crud_model->mengambil_data_id('kurir','id_kurir',$id);
+		$data['obj_kurir'] = $data['array_kurir'][0];
+		// var_dump($data['obj_kurir']);die();
+		
+		$this->load->view('kurir_edit',$data);
+	}
+
 }

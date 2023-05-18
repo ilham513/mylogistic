@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 12:37 PM
+-- Generation Time: May 18, 2023 at 12:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -54,6 +54,14 @@ CREATE TABLE `kurir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `kurir`
+--
+
+INSERT INTO `kurir` (`id_kurir`, `nama_kurir`, `merek_kendaraan`, `no_telpon`) VALUES
+(1, 'A', 'A', '000'),
+(2, 'B', 'B', '0000');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -77,7 +85,7 @@ ALTER TABLE `kurir`
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
