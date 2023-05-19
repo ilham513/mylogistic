@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kurir extends CI_Controller {
+class Gudang extends CI_Controller {
 
 	public function __construct()
 	{
@@ -12,7 +12,7 @@ class Kurir extends CI_Controller {
 		
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
-		$this->data['sidebar'] = 'kurir';
+		$this->data['sidebar'] = 'gudang';
 	}
 
 	public function index()
@@ -21,9 +21,9 @@ class Kurir extends CI_Controller {
 		$data['sidebar'] = $this->data['sidebar'];
 		
 		//ambil data
-		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
+		$data['array_gudang'] = $this->crud_model->mengambil_data('gudang');
 		
-		$this->load->view('kurir_view',$data);
+		$this->load->view('gudang_view',$data);
 	}
 
 	public function add()
@@ -31,18 +31,19 @@ class Kurir extends CI_Controller {
 		$data['nama'] = $this->data['nama'];
 		$data['sidebar'] = $this->data['sidebar'];
 		
-		$this->load->view('kurir_add',$data);
+		$this->load->view('gudang_add',$data);
 	}
 
 	public function add_go()
 	{
+		// var_dump($_POST);die();
+		
 		$data = array(
-			'nama_kurir' => $this->input->post('nama_kurir'),		
-			'merek_kendaraan' => $this->input->post('merek_kendaraan'),		
+			'lokasi_gudang' => $this->input->post('lokasi_gudang'),
 			'no_telpon' => $this->input->post('no_telpon')		
 		);
 
-		$this->crud_model->masukan_data('kurir',$data);
+		$this->crud_model->masukan_data('gudang', $data);
 	}
 	
 	public function edit($id)
@@ -50,11 +51,10 @@ class Kurir extends CI_Controller {
 		$data['nama'] = $this->data['nama'];
 		$data['sidebar'] = $this->data['sidebar'];
 		
-		$data['array_kurir'] = $this->crud_model->mengambil_data_id('kurir','id_kurir',$id);
-		$data['obj_kurir'] = $data['array_kurir'][0];
-		// var_dump($data['obj_kurir']);die();
+		$data['array_gudang'] = $this->crud_model->mengambil_data_id('gudang','id_gudang',$id);
+		$data['obj_gudang'] = $data['array_gudang'][0];
 		
-		$this->load->view('kurir_edit',$data);
+		$this->load->view('gudang_edit',$data);
 	}
 
 	public function edit_go()

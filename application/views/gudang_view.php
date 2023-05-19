@@ -10,9 +10,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- MDB -->
-	<link rel="stylesheet" href="css/mdb.min.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
-	<link rel="stylesheet" href="css/admin.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
 	
 	<style>
 	.center {
@@ -89,7 +89,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 			  </div>
 			  <div class="card-body">
 				<div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
-				  <button class="btn btn-success fw-bold" type="button">Tambah Gudang</button>
+				  <a href="<?=site_url('gudang/add')?>"><button class="btn btn-success fw-bold" type="button">Tambah Gudang</button></a>
 				</div>
 				
 				<table class="table align-middle mb-0 bg-white">
@@ -102,51 +102,17 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					</tr>
 				  </thead>
 				  <tbody>
+				<?php foreach($array_gudang as $gudang): ?>
 					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
+					  <td><?=$gudang->id_gudang?></td>
+					  <td><?=$gudang->lokasi_gudang?></td>
+					  <td><?=$gudang->no_telpon?></td>
 					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
+						<a href="<?=site_url('gudang/edit/'.$gudang->id_gudang)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
+						<a href="<?=site_url('gudang/hapus/'.$gudang->id_gudang)?>"><span class="fw-bold text-danger">HAPUS</span></a>
 					  </td>
 					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>Awaiting</td>
-					  <td>
-						<span class="fw-bold me-2 text-primary">EDIT</span>
-						<span class="fw-bold text-danger">HAPUS</span>
-					  </td>
-					</tr>
+				<?php endforeach; ?>
 				  </tbody>
 				</table>	
 				
@@ -161,9 +127,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
 
   <!-- MDB -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript" src="js/admin.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
+  
+	<script>  
+		menyalakan_sidenav('<?=$sidebar?>');
+	</script>
+
 </body>
 
 </html>

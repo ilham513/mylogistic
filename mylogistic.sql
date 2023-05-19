@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 12:14 PM
+-- Generation Time: May 19, 2023 at 09:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -43,6 +43,27 @@ INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gudang`
+--
+
+CREATE TABLE `gudang` (
+  `id_gudang` int(255) NOT NULL,
+  `lokasi_gudang` varchar(255) NOT NULL,
+  `no_telpon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gudang`
+--
+
+INSERT INTO `gudang` (`id_gudang`, `lokasi_gudang`, `no_telpon`) VALUES
+(1, 'A', '0'),
+(2, 'B', '0'),
+(3, 'C', '0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kurir`
 --
 
@@ -58,8 +79,10 @@ CREATE TABLE `kurir` (
 --
 
 INSERT INTO `kurir` (`id_kurir`, `nama_kurir`, `merek_kendaraan`, `no_telpon`) VALUES
-(1, 'A', 'A', '000'),
-(2, 'B', 'B', '0000');
+(1, 'AB', 'A', '000'),
+(2, 'BA', 'B', '0000'),
+(3, 'AAA', 'A', '000'),
+(5, 'BBB', 'B', '0');
 
 --
 -- Indexes for dumped tables
@@ -72,6 +95,12 @@ ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gudang`
+--
+ALTER TABLE `gudang`
+  ADD PRIMARY KEY (`id_gudang`);
+
+--
 -- Indexes for table `kurir`
 --
 ALTER TABLE `kurir`
@@ -82,10 +111,16 @@ ALTER TABLE `kurir`
 --
 
 --
+-- AUTO_INCREMENT for table `gudang`
+--
+ALTER TABLE `gudang`
+  MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

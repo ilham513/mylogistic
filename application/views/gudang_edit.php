@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kurir Edit</title>
+    <title>Gudang Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,31 +80,26 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
   <main style="margin-top: 58px">
     <div class="container pt-4">
+
 	 <!-- Section: Main chart -->
 		  <section class="mb-4">
 			<div class="card">
 			  <div class="card-header py-3">
-				<h5 class="mb-0"><strong>Edit Kurir</strong></h5>
+				<h5 class="mb-0"><strong>Edit Gudang</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<form action="<?=site_url('kurir/edit_go')?>" method="post">
-					<input name="id_kurir" type="hidden" value="<?=$obj_kurir->id_kurir?>" id="form6Example3" class="form-control" />
-
+				<form action="<?=site_url('gudang/edit_go')?>" method="post">
+				  <input name="id_gudang" type="hidden" value="<?=$obj_gudang->id_gudang;?>" class="form-control" />
+				  
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="nama_kurir" type="text" value="<?=$obj_kurir->nama_kurir?>" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">Nama</label>
+					<input name="lokasi_gudang" type="text" value="<?=$obj_gudang->lokasi_gudang?>" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Lokasi Gudang</label>
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="merek_kendaraan" type="text" value="<?=$obj_kurir->merek_kendaraan?>" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">Merk Kendaraan</label>
-				  </div>
-
-				  <!-- input -->
-				  <div name="telpon" class="form-outline mb-4">
-					<input name="no_telpon" type="text" value="<?=$obj_kurir->no_telpon?>" id="form6Example3" class="form-control" />
+					<input name="no_telpon"  type="text" value="<?=$obj_gudang->no_telpon?>" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">No Telpon</label>
 				  </div>
 
@@ -129,6 +124,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
 	</script>
+
 </body>
 
 </html>

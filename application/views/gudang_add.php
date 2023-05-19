@@ -10,9 +10,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- MDB -->
-	<link rel="stylesheet" href="css/mdb.min.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
-	<link rel="stylesheet" href="css/admin.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
 	
 	<style>
 	.center {
@@ -88,22 +88,16 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<h5 class="mb-0"><strong>Tambah Gudang</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<form>
+				<form action="<?=site_url('gudang/add_go')?>" method="post">
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input type="text" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">ID</label>
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input type="text" id="form6Example3" class="form-control" />
+					<input name="lokasi_gudang" type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">Lokasi Gudang</label>
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input type="text" id="form6Example3" class="form-control" />
+					<input name="no_telpon"  type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">No Telpon</label>
 				  </div>
 
@@ -121,9 +115,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
 
   <!-- MDB -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript" src="js/admin.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
+  
+  	<script>  
+		menyalakan_sidenav('<?=$sidebar?>');
+	</script>
+
 </body>
 
 </html>
