@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pengiriman Add</title>
+    <title>Pelanggan Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- MDB -->
+	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
 	
@@ -84,63 +85,28 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 		  <section class="mb-4">
 			<div class="card">
 			  <div class="card-header py-3">
-				<h5 class="mb-0"><strong>Tambah Pengiriman</strong></h5>
+				<h5 class="mb-0"><strong>Edit Pelanggan</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<form action="<?=site_url('pengiriman/add_go')?>" method="post">
+				<form action="<?=site_url('pelanggan/edit_go')?>" method="post">
+				  <input name="id_pelanggan" value="<?=$obj_pelanggan->id_pelanggan?>" type="hidden" id="form6Example3" class="form-control" />
+
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_gudang" class="form-select" aria-label="Default select example">
-					  <option selected disabled>Pilih Lokasi Gudang...</option>
-					  <?php foreach($array_gudang as $gudang): ?>
-					  <option value="<?=$gudang->id_gudang?>"><?=$gudang->lokasi_gudang?></option>
-					  <?php endforeach; ?>
-					</select>					
+					<input name="nama_pelanggan" value="<?=$obj_pelanggan->nama_pelanggan?>" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Nama</label>
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_kurir" class="form-select" aria-label="Default select example">
-					  <option selected disabled>Pilih Nama Kurir...</option>
-					  <?php foreach($array_kurir as $kurir): ?>
-					  <option value="<?=$kurir->id_kurir?>"><?=$kurir->nama_kurir?></option>
-					  <?php endforeach; ?>
-					</select>					
+					<input name="alamat" value="<?=$obj_pelanggan->alamat?>" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Alamat</label>
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_pelanggan" class="form-select" aria-label="Default select example">
-					  <option selected disabled>Pilih Nama Pengirim...</option>
-					  <?php foreach($array_pelanggan as $pelanggan): ?>
-					  <option value="<?=$pelanggan->id_pelanggan?>"><?=$pelanggan->nama_pelanggan?></option>
-					  <?php endforeach; ?>
-					</select>					
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input name="nama_penerima"  type="text" id="form6Example3" placeholder="Nama Penerima" class="form-control" />
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input name="alamat_penerima"  type="text" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input name="jumlah" type="number" id="form6Example3" placeholder="Jumlah" class="form-control" />
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input name="berat" type="number" id="form6Example3" placeholder="Berat" class="form-control" />
-				  </div>
-
-				  <!-- input -->
-				  <div class="form-outline mb-4">
-					<input name="harga" type="number" id="form6Example3" placeholder="Harga" class="form-control" />
+					<input name="no_telpon" value="<?=$obj_pelanggan->no_telpon?>" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">No Telpon</label>
 				  </div>
 
 				  <!-- Submit button -->
@@ -160,11 +126,11 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
-  
- 	<script>  
-		menyalakan_sidenav('pengiriman');
-	</script>
  
+  	<script>  
+		menyalakan_sidenav('pelanggan');
+	</script>
+
 </body>
 
 </html>

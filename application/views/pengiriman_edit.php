@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pengiriman Add</title>
+    <title>Pengiriman Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,16 +84,18 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 		  <section class="mb-4">
 			<div class="card">
 			  <div class="card-header py-3">
-				<h5 class="mb-0"><strong>Tambah Pengiriman</strong></h5>
+				<h5 class="mb-0"><strong>Edit Pengiriman</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<form action="<?=site_url('pengiriman/add_go')?>" method="post">
+				<form action="<?=site_url('pengiriman/edit_go')?>" method="post">
+				  <input name="id_pengiriman"  type="hidden" id="form6Example3" value="<?=$obj_pengiriman->id_pengiriman?>" class="form-control" />
+				
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<select name="id_gudang" class="form-select" aria-label="Default select example">
 					  <option selected disabled>Pilih Lokasi Gudang...</option>
 					  <?php foreach($array_gudang as $gudang): ?>
-					  <option value="<?=$gudang->id_gudang?>"><?=$gudang->lokasi_gudang?></option>
+					  <option <?=$gudang->id_gudang == $obj_pengiriman->id_gudang ? 'selected' : '';?> value="<?=$gudang->id_gudang?>"><?=$gudang->lokasi_gudang?></option>
 					  <?php endforeach; ?>
 					</select>					
 				  </div>
@@ -103,7 +105,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<select name="id_kurir" class="form-select" aria-label="Default select example">
 					  <option selected disabled>Pilih Nama Kurir...</option>
 					  <?php foreach($array_kurir as $kurir): ?>
-					  <option value="<?=$kurir->id_kurir?>"><?=$kurir->nama_kurir?></option>
+					  <option <?=$kurir->id_kurir == $obj_pengiriman->id_kurir ? 'selected' : '';?> value="<?=$kurir->id_kurir?>"><?=$kurir->nama_kurir?></option>
 					  <?php endforeach; ?>
 					</select>					
 				  </div>
@@ -113,34 +115,34 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<select name="id_pelanggan" class="form-select" aria-label="Default select example">
 					  <option selected disabled>Pilih Nama Pengirim...</option>
 					  <?php foreach($array_pelanggan as $pelanggan): ?>
-					  <option value="<?=$pelanggan->id_pelanggan?>"><?=$pelanggan->nama_pelanggan?></option>
+					  <option <?=$pelanggan->id_pelanggan == $obj_pengiriman->id_pelanggan ? 'selected' : '';?> value="<?=$pelanggan->id_pelanggan?>"><?=$pelanggan->nama_pelanggan?></option>
 					  <?php endforeach; ?>
 					</select>					
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="nama_penerima"  type="text" id="form6Example3" placeholder="Nama Penerima" class="form-control" />
+					<input name="nama_penerima"  type="text" id="form6Example3" value="<?=$obj_pengiriman->nama_penerima?>" placeholder="Nama Penerima" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="alamat_penerima"  type="text" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
+					<input name="alamat_penerima"  type="text" value="<?=$obj_pengiriman->alamat_penerima?>" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="jumlah" type="number" id="form6Example3" placeholder="Jumlah" class="form-control" />
+					<input name="jumlah" type="number" value="<?=$obj_pengiriman->jumlah?>" id="form6Example3" placeholder="Jumlah" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="berat" type="number" id="form6Example3" placeholder="Berat" class="form-control" />
+					<input name="berat" type="number" value="<?=$obj_pengiriman->berat?>" id="form6Example3" placeholder="Berat" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="harga" type="number" id="form6Example3" placeholder="Harga" class="form-control" />
+					<input name="harga" type="number" value="<?=$obj_pengiriman->harga?>" id="form6Example3" placeholder="Harga" class="form-control" />
 				  </div>
 
 				  <!-- Submit button -->

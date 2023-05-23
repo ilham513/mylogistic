@@ -10,9 +10,9 @@
           </a>
           <a href="<?=site_url('gudang')?>"" class="list-group-item list-group-item-action py-2 ripple" id="gudang"><i
               class="fas fa-box fa-fw me-3"></i><span>Gudang</span></a>
-          <a href="pelanggan_view.php" class="list-group-item list-group-item-action py-2 ripple" id="pelanggan"><i
+          <a href="<?=site_url('pelanggan')?>" class="list-group-item list-group-item-action py-2 ripple" id="pelanggan"><i
               class="fas fa-user fa-fw me-3"></i><span>Pelanggan</span></a>
-          <a href="pengiriman_view.php" class="list-group-item list-group-item-action py-2 ripple" id="pengiriman">
+          <a href="<?=site_url('pengiriman')?>" class="list-group-item list-group-item-action py-2 ripple" id="pengiriman">
             <i class="fas fa-truck fa-fw me-3"></i><span>Pengiriman</span>
           </a>
           <a href="laporan_view.php" class="list-group-item list-group-item-action py-2 ripple" id="laporan">

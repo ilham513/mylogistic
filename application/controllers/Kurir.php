@@ -59,7 +59,13 @@ class Kurir extends CI_Controller {
 
 	public function edit_go()
 	{
-		$this->crud_model->mengubah_data_id('kurir','id_kurir',$this->input->post('id_kurir'));
+		$data = array(
+			'nama_kurir' => $this->input->post('nama_kurir'),		
+			'merek_kendaraan' => $this->input->post('merek_kendaraan'),		
+			'no_telpon' => $this->input->post('no_telpon')		
+		);
+
+		$this->crud_model->mengubah_data_id('kurir', $data,'id_kurir',$this->input->post('id_kurir'));
 		var_dump($_POST);
 	}
 

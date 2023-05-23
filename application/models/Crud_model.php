@@ -21,6 +21,16 @@ class Crud_model extends CI_Model{
 		return $query->result();
 	}
 
+	public function mengambil_data_join($nama_tabel)
+	{
+		$this->db->select('*');
+		$this->db->from($nama_tabel);
+		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
+		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function mengambil_data_id($nama_tabel, $nama_colum, $id)
 	{		
 		$this->db->select('*');
@@ -31,20 +41,15 @@ class Crud_model extends CI_Model{
 		return $query->result();
 	}
 
-	public function mengubah_data_id($nama_tabel, $nama_colum, $id)
+	public function mengubah_data_id($nama_tabel, $data, $nama_colum, $id)
 	{
-		$data = array(
-			'nama_kurir' => $this->input->post('nama_kurir'),		
-			'merek_kendaraan' => $this->input->post('merek_kendaraan'),		
-			'no_telpon' => $this->input->post('no_telpon')		
-		);
-	
+		
 		$this->db->where($nama_colum, $id);
 		$this->db->update($nama_tabel,$data);
 
 		//redirect
 		echo '<script>alert("Data berhasil Diupdate!")</script>';
-		redirect('/kurir', 'refresh'); //redir				
+		redirect('/'.$nama_tabel, 'refresh'); //redir				
 	}
 
 	public function menghapus_data_id($nama_tabel, $nama_colum, $id)
@@ -55,7 +60,7 @@ class Crud_model extends CI_Model{
 
 		//redirect
 		echo '<script>alert("Data berhasil Dihapus!")</script>';
-		redirect('/kurir', 'refresh'); //redir				
+		redirect('/'.$nama_tabel, 'refresh'); //redir				
 	}
 
 }
