@@ -15,7 +15,7 @@
           <a href="<?=site_url('pengiriman')?>" class="list-group-item list-group-item-action py-2 ripple" id="pengiriman">
             <i class="fas fa-truck fa-fw me-3"></i><span>Pengiriman</span>
           </a>
-          <a href="laporan_view.php" class="list-group-item list-group-item-action py-2 ripple" id="laporan">
+          <a href="<?=site_url('laporan')?>" class="list-group-item list-group-item-action py-2 ripple" id="laporan">
             <i class="fas fa-newspaper fa-fw me-3"></i><span>Laporan</span>
           </a>
         </div>

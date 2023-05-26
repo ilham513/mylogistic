@@ -107,7 +107,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <tbody>
 				  <?php foreach($array_pengiriman as $pengiriman): ?>
 					<tr>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
+					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
 					  <td><?=$pengiriman->nama_pelanggan?></td>
 					  <td><?=$pengiriman->nama_penerima?></td>
 					  <td><?=$pengiriman->alamat_penerima?></td>
@@ -129,34 +129,33 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 	  <!-- Section: Main chart -->
 	  
 		  
-
+	<?php foreach($array_pengiriman as $pengiriman): ?>
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal<?=$pengiriman->id_pengiriman?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Detail AB00001</h5>
+			<h5 class="modal-title" id="exampleModalLabel">Detail JKT0000000<?=$pengiriman->id_pengiriman?></h5>
 			<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
 		  </div>
-		  <div class="modal-body">
-				
+		  <div class="modal-body">				
 				<table class="table align-middle mb-0 bg-white">
 				  <tbody>
 					<tr>
 					  <td>Harga</td>
-					  <td>Rp 1.000</td>
+					  <td>: Rp <?=number_format($pengiriman->harga)?></td>
 					</tr>
 					<tr>
 					  <td>Jumlah</td>
-					  <td>: 50 pcs</td>
+					  <td>: <?=$pengiriman->jumlah?></td>
 					</tr>
 					<tr>
 					  <td>Berat</td>
-					  <td>: 2 KG</td>
+					  <td>: <?=$pengiriman->berat?> KG</td>
 					</tr>
-					<tr class="bg-light">
+					<tr class="fw-bold bg-light">
 					  <td>Total</td>
-					  <td>: Rp 50.000</td>
+					  <td>: Rp <?=number_format($pengiriman->harga * $pengiriman->jumlah)?></td>
 					</tr>
 				  </tbody>
 				</table>	
@@ -167,6 +166,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 		</div>
 	  </div>
 	</div>
+	<?php endforeach; ?>
 	
     </div>
   </main>

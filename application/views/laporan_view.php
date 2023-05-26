@@ -10,9 +10,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- MDB -->
-	<link rel="stylesheet" href="css/mdb.min.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
-	<link rel="stylesheet" href="css/admin.css" />
+	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
 	
 	<style>
 	.center {
@@ -101,36 +101,18 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					</tr>
 				  </thead>
 				  <tbody>
+				  <?php foreach($array_laporan as $laporan): ?>
 					<tr>
 					  <td><input type="checkbox"/></td>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00001</td>
-					  <td>Andi</td>
-					  <td>Ongoing</td>
-					  <td>20-05-2023</td>
+					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">JKT0000000<?=$laporan->id_pengiriman?></td>
+					  <td><?=$laporan->nama_pelanggan?></td>
+					  <td><?=$laporan->status?></td>
+					  <td><?=$laporan->tanggal?></td>
 					  <td>
 						<span class="fw-bold me-2 text-secondary">Print</span>
 					  </td>
 					</tr>
-					<tr>
-					  <td><input type="checkbox"/></td>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00002</td>
-					  <td>Budi</td>
-					  <td>Ongoing</td>
-					  <td>20-05-2023</td>
-					  <td>
-						<span class="fw-bold me-2 text-secondary">Print</span>
-					  </td>
-					</tr>
-					<tr>
-					  <td><input type="checkbox"/></td>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">AB00003</td>
-					  <td>Cinta</td>
-					  <td>Ongoing</td>
-					  <td>20-05-2023</td>
-					  <td>
-						<span class="fw-bold me-2 text-secondary">Print</span>
-					  </td>
-					</tr>
+				  <?php endforeach; ?>
 				  </tbody>
 				</table>	
 
@@ -148,9 +130,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
 
   <!-- MDB -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript" src="js/admin.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
+  
+   
+	<script>  
+		menyalakan_sidenav('<?=$sidebar?>');
+	</script>
 </body>
 
 </html>
