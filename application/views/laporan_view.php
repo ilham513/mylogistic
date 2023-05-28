@@ -80,7 +80,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <!--Main layout-->
   <main style="margin-top: 58px">
     <div class="container pt-4">
-
+	<form action="<?=site_url('laporan/bulk_pdf')?>" method="post">
 	 <!-- Section: Main chart -->
 		  <section class="mb-4">
 			<div class="card">
@@ -103,13 +103,13 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <tbody>
 				  <?php foreach($array_laporan as $laporan): ?>
 					<tr>
-					  <td><input type="checkbox"/></td>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal">JKT0000000<?=$laporan->id_pengiriman?></td>
+					  <td><input name="bulk_id[]" value="<?=$laporan->id_pengiriman?>" type="checkbox"/></td>
+					  <td>JKT0000000<?=$laporan->id_pengiriman?></td>
 					  <td><?=$laporan->nama_pelanggan?></td>
 					  <td><?=$laporan->status?></td>
 					  <td><?=$laporan->tanggal?></td>
 					  <td>
-						<span class="fw-bold me-2 text-secondary">Print</span>
+						<a href="<?=site_url('laporan/pdf/'.$laporan->id_pengiriman)?>"><span class="fw-bold me-2 text-secondary">Print</span></a>
 					  </td>
 					</tr>
 				  <?php endforeach; ?>
@@ -117,13 +117,13 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				</table>	
 
 				<div class="d-grid gap-2 mt-2 d-md-flex justify-content-md-start">
-				  <button class="btn btn-success fw-bold" type="button">Print Laporan Yang Dicentang</button>
+				  <button class="btn btn-success fw-bold" type="submit">Print Laporan Yang Dicentang</button>
 				</div>
-					
 			  </div>
 			</div>
 		  </section>
 	  <!-- Section: Main chart -->
+	  </form>	
 	
     </div>
   </main>

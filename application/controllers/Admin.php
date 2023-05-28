@@ -8,6 +8,10 @@ class Admin extends CI_Controller {
 		$data['nama'] = 'PT AAA';
 		$data['sidebar'] = 'dashboard';
 		
+		$this->load->model('login_model');
+		
+		$this->login_model->mengecek_session();
+		
 		$this->load->view('dashboard',$data);
 	}
 }

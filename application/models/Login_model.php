@@ -19,4 +19,23 @@ class Login_model extends CI_Model{
 		}		
 	}
 
+	public function mengecek_session()
+	{
+		if($this->session->userdata('login')){
+			
+		}else{
+			echo '<script>alert("Silahkan login terlebih dahulu!")</script>';
+			redirect('login', 'refresh');
+		}
+				
+	}
+
+
+	public function menghapus_session()
+	{
+		$this->session->unset_userdata('login');
+		echo '<script>alert("berhasil logout")</script>';
+		redirect('login', 'refresh');				
+	}
+
 }

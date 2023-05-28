@@ -145,6 +145,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<input name="harga" type="number" value="<?=$obj_pengiriman->harga?>" id="form6Example3" placeholder="Harga" class="form-control" />
 				  </div>
 
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="status" class="form-select" aria-label="Default select example">
+					  <option value="ongoing" selected>ongoing</option>
+					  <option value="selesai">selesai</option>
+					</select>					
+				  </div>
+
 				  <!-- Submit button -->
 				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>
 				</form>				

@@ -13,6 +13,10 @@ class Laporan extends CI_Controller {
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
 		$this->data['sidebar'] = 'laporan';
+		
+		$this->login_model->mengecek_session();
+		
+		include_once APPPATH . '/third_party/fpdf/fpdf.php';
 	}
 
 	public function index()
@@ -27,77 +31,174 @@ class Laporan extends CI_Controller {
 		
 		$this->load->view('laporan_view',$data);
 	}
-
-	public function add()
-	{
-		$data['nama'] = $this->data['nama'];
-		$data['sidebar'] = $this->data['sidebar'];
-		
-		//ambil data
-		$data['array_gudang'] = $this->crud_model->mengambil_data('gudang');
-		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
-		$data['array_pelanggan'] = $this->crud_model->mengambil_data('pelanggan');
-		
-		$this->load->view('laporan_add',$data);
-	}
-
-	public function add_go()
-	{
-		// var_dump($_POST);die();
-		
-		$data = array(
-			'id_gudang' => $this->input->post('id_gudang'),
-			'id_kurir' => $this->input->post('id_kurir'),
-			'id_pelanggan' => $this->input->post('id_pelanggan'),
-			'nama_penerima' => $this->input->post('nama_penerima'),
-			'alamat_penerima' => $this->input->post('alamat_penerima'),
-			'jumlah' => $this->input->post('jumlah'),
-			'berat' => $this->input->post('berat'),
-			'harga' => $this->input->post('harga')		
-		);
-
-		$this->crud_model->masukan_data('laporan', $data);
-	}
 	
-	public function edit($id)
+	public function pdf($id)
 	{
-		$data['nama'] = $this->data['nama'];
-		$data['sidebar'] = $this->data['sidebar'];
-		
-		//ambil data
-		$data['array_gudang'] = $this->crud_model->mengambil_data('gudang');
-		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
-		$data['array_pelanggan'] = $this->crud_model->mengambil_data('pelanggan');
+		$nama = $this->data['nama'];
 
+		$array_laporan = $this->crud_model->mengambil_data_join_id('pengiriman','pengiriman.id_pengiriman',$id);
+		$obj_laporan = $array_laporan[0];
+
+		// var_dump($obj_laporan);die();
 		
-		$data['array_laporan'] = $this->crud_model->mengambil_data_id('laporan','id_laporan',$id);
-		$data['obj_laporan'] = $data['array_laporan'][0];
+		// intance object dan memberikan pengaturan halaman PDF
+		$pdf=new FPDF('P','mm','A4');
+		$pdf->AddPage();
+		 
+		$pdf->SetFont('Times','B',13);
+		$pdf->Cell(200,10,'PDF Pengiriman',0,0,'C');
+		 
+		$pdf->Cell(10,15,'',0,1);
+		$pdf->SetFont('Times','B',9);
+		$pdf->Cell(140,7,$nama,1,0,'C');
+		$pdf->Cell(50,7,'JKT0000000'.$obj_laporan->id_pengiriman ,1,0,'C');
+		 
+		 
+		$pdf->Cell(10,7,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(70,6, 'Pengirim: '.$obj_laporan->nama_pelanggan,1,0);
+		$pdf->Cell(70,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);
+		$pdf->Cell(50,6, 'Jumlah: '.$obj_laporan->jumlah,1,0);  
+
+		$pdf->Cell(10,6,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat,1,0);
+		$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat_penerima,1,0);
+		$pdf->Cell(50,6, '',1,0);  
+
+		$pdf->Cell(10,6,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(50,6, 'Tanggal: '.$obj_laporan->tanggal,1,0);
+		$pdf->Cell(45,6, 'Kurir: '.$obj_laporan->nama_kurir,1,0);
+		$pdf->Cell(45,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);  
+		$pdf->Cell(50,6, 'Berat: '.$obj_laporan->berat.' KG',1,0);  
+
+
+		$pdf->Cell(10,15,'',0,1);
+		$pdf->SetFont('Times','B',9);
+		$pdf->Cell(140,7,$nama,1,0,'C');
+		$pdf->Cell(50,7,'JKT0000000'.$obj_laporan->id_pengiriman ,1,0,'C');
+		 
+		 
+		$pdf->Cell(10,7,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(70,6, 'Pengirim: '.$obj_laporan->nama_pelanggan,1,0);
+		$pdf->Cell(70,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);
+		$pdf->Cell(50,6, 'Jumlah: '.$obj_laporan->jumlah,1,0);  
+
+		$pdf->Cell(10,6,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat,1,0);
+		$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat_penerima,1,0);
+		$pdf->Cell(50,6, '',1,0);  
+
+		$pdf->Cell(10,6,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(50,6, 'Tanggal: '.$obj_laporan->tanggal,1,0);
+		$pdf->Cell(45,6, 'Kurir: '.$obj_laporan->nama_kurir,1,0);
+		$pdf->Cell(45,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);  
+		$pdf->Cell(50,6, 'Berat: '.$obj_laporan->berat.' KG',1,0);  
+
+		$pdf->Cell(10,6,'',0,1);
+		$pdf->SetFont('Times','',10);
+
+		$pdf->Cell(95,20, 'TTD Penerima: ......................',1,0,'C');
+		$pdf->Cell(95,20, 'TTD Kurir: ......................',1,0,'C');
+
+		$pdf->Output();
 		
-		$this->load->view('laporan_edit',$data);
 	}
 
-	public function edit_go()
+	public function bulk_pdf()
 	{
-		$data = array(
-			'id_laporan' => $this->input->post('id_laporan'),		
-			'id_gudang' => $this->input->post('id_gudang'),		
-			'id_kurir' => $this->input->post('id_kurir'),		
-			'id_pelanggan' => $this->input->post('id_pelanggan'),		
-			'nama_penerima' => $this->input->post('nama_penerima'),		
-			'alamat_penerima' => $this->input->post('alamat_penerima'),		
-			'jumlah' => $this->input->post('jumlah'),		
-			'berat' => $this->input->post('berat'),		
-			'harga' => $this->input->post('harga')	
-		);
+		$array_id = $this->input->post('bulk_id');
+		$nama = $this->data['nama'];
+		
+		//buat pdf
+		$pdf=new FPDF('P','mm','A4');
 
-		$this->crud_model->mengubah_data_id('laporan', $data,'id_laporan',$this->input->post('id_laporan'));
-		var_dump($_POST);
+		foreach($array_id as $id_laporan){
+			$array_laporan = $this->crud_model->mengambil_data_join_id('pengiriman','pengiriman.id_pengiriman',$id_laporan);
+			$obj_laporan = $array_laporan[0];
+			
+			// intance object dan memberikan pengaturan halaman PDF
+			$pdf->AddPage();
+			 
+			$pdf->SetFont('Times','B',13);
+			$pdf->Cell(200,10,'PDF Pengiriman',0,0,'C');
+			 
+			$pdf->Cell(10,15,'',0,1);
+			$pdf->SetFont('Times','B',9);
+			$pdf->Cell(140,7,$nama,1,0,'C');
+			$pdf->Cell(50,7,'JKT0000000'.$obj_laporan->id_pengiriman ,1,0,'C');
+			 
+			 
+			$pdf->Cell(10,7,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(70,6, 'Pengirim: '.$obj_laporan->nama_pelanggan,1,0);
+			$pdf->Cell(70,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);
+			$pdf->Cell(50,6, 'Jumlah: '.$obj_laporan->jumlah,1,0);  
+
+			$pdf->Cell(10,6,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat,1,0);
+			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat_penerima,1,0);
+			$pdf->Cell(50,6, '',1,0);  
+
+			$pdf->Cell(10,6,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(50,6, 'Tanggal: '.$obj_laporan->tanggal,1,0);
+			$pdf->Cell(45,6, 'Kurir: '.$obj_laporan->nama_kurir,1,0);
+			$pdf->Cell(45,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);  
+			$pdf->Cell(50,6, 'Berat: '.$obj_laporan->berat.' KG',1,0);  
+
+
+			$pdf->Cell(10,15,'',0,1);
+			$pdf->SetFont('Times','B',9);
+			$pdf->Cell(140,7,$nama,1,0,'C');
+			$pdf->Cell(50,7,'JKT0000000'.$obj_laporan->id_pengiriman ,1,0,'C');
+			 
+			 
+			$pdf->Cell(10,7,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(70,6, 'Pengirim: '.$obj_laporan->nama_pelanggan,1,0);
+			$pdf->Cell(70,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);
+			$pdf->Cell(50,6, 'Jumlah: '.$obj_laporan->jumlah,1,0);  
+
+			$pdf->Cell(10,6,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat,1,0);
+			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat_penerima,1,0);
+			$pdf->Cell(50,6, '',1,0);  
+
+			$pdf->Cell(10,6,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(50,6, 'Tanggal: '.$obj_laporan->tanggal,1,0);
+			$pdf->Cell(45,6, 'Kurir: '.$obj_laporan->nama_kurir,1,0);
+			$pdf->Cell(45,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);  
+			$pdf->Cell(50,6, 'Berat: '.$obj_laporan->berat.' KG',1,0);  
+
+			$pdf->Cell(10,6,'',0,1);
+			$pdf->SetFont('Times','',10);
+
+			$pdf->Cell(95,20, 'TTD Penerima: ......................',1,0,'C');
+			$pdf->Cell(95,20, 'TTD Kurir: ......................',1,0,'C');
+					
+		}
+
+		$pdf->Output();
+		
 	}
-
-	public function hapus($id)
-	{
-		$this->crud_model->menghapus_data_id('laporan','id_laporan',$id);
-		var_dump($_POST);
-	}
-
 }

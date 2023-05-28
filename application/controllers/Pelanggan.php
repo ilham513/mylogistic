@@ -13,6 +13,8 @@ class Pelanggan extends CI_Controller {
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
 		$this->data['sidebar'] = 'pelanggan';
+		
+		$this->login_model->mengecek_session();
 	}
 
 	public function index()

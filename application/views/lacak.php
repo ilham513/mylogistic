@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage <?=$nama?></title>
+    <title>Lacak <?=$nama?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,25 +95,47 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 </nav>
 
 
-	<div class="container row px-5">
-		<div class="col-7 px-5 align-self-center">
-		  	<div class="container mt-5">
-				<h1 class="mb-3 fw-bold">Lacak Resi</h1>
-
-				<form action="<?=site_url('welcome/lacak')?>" method="get">
-				  
-				  <div class="form-group mb-3">
-					<label for="exampleFormControlSelect1" class="mb-1">Masukan nomor resi di sini:</label>
-					<input name="resi_pengiriman" type="text" class="form-control" id="exampleInputPassword1">
-				  </div>
-				  <button type="submit" class="btn btn-success">Lacak</button>
-				</form>				
+	<div class="container px-5">
+	 <!-- Section: Main chart -->
+		  <section class="mb-4 mt-5">
+			<div class="card">
+			  <div class="card-header text-dark py-3">
+				<h5 class="mb-0"><strong>Lacak Resi</strong></h5>
+			  </div>
+			  <div class="card-body">				
+				<table class="table align-middle mb-0 bg-white">
+				  <thead class="bg-light">
+					<tr>
+					  <th>No Resi</th>
+					  <th>Nama Pengirim</th>
+					  <th>Nama Penerima</th>
+					  <th>Alamat</th>
+					  <th>Lokasi Terakhir</th>
+					  <th>Tanggal diperbarui</th>
+					  <th>Status</th>
+					</tr>
+				  </thead>
+				  <tbody>
+				  <?php foreach($array_pengiriman as $pengiriman): ?>
+					<tr>
+					  <td>JKT0000000<?=$pengiriman->id_pengiriman?></td>
+					  <td><?=$pengiriman->nama_pelanggan?></td>
+					  <td><?=$pengiriman->nama_penerima?></td>
+					  <td><?=$pengiriman->alamat_penerima?></td>
+					  <td><?=$pengiriman->lokasi_gudang?></td>
+					  <td><?=$pengiriman->tanggal?></td>
+					  <td><?=$pengiriman->status?></td>
+					</tr>
+				  <?php endforeach; ?>
+				  </tbody>
+				</table>	
 				
+				
+			  </div>
 			</div>
-		</div>
-		<div class="col-5">
-		  <img class="mt-5" width="700px" src="<?=base_url()?>img/main.png"/>
-		</div>
+		  </section>
+	  <!-- Section: Main chart -->
+	
 	</div>
 	
 	

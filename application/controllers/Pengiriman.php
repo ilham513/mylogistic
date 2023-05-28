@@ -13,6 +13,8 @@ class Pengiriman extends CI_Controller {
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
 		$this->data['sidebar'] = 'pengiriman';
+		
+		$this->login_model->mengecek_session();
 	}
 
 	public function index()
@@ -87,7 +89,8 @@ class Pengiriman extends CI_Controller {
 			'alamat_penerima' => $this->input->post('alamat_penerima'),		
 			'jumlah' => $this->input->post('jumlah'),		
 			'berat' => $this->input->post('berat'),		
-			'harga' => $this->input->post('harga')	
+			'harga' => $this->input->post('harga'),	
+			'status' => $this->input->post('status')	
 		);
 
 		$this->crud_model->mengubah_data_id('pengiriman', $data,'id_pengiriman',$this->input->post('id_pengiriman'));

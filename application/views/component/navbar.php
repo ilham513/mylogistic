@@ -22,7 +22,7 @@
                 alt="" loading="lazy" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="<?=site_url('login/destroy')?>">Logout</a></li>
             </ul>
           </li>
         </ul>

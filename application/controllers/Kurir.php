@@ -13,6 +13,8 @@ class Kurir extends CI_Controller {
 		//variabel 
 		$this->data['nama'] = 'PT AAA';
 		$this->data['sidebar'] = 'kurir';
+		
+		$this->login_model->mengecek_session();
 	}
 
 	public function index()

@@ -14,6 +14,11 @@ class login extends CI_Controller {
 		$this->load->view('login');
 	}
 
+	public function destroy()
+	{
+		$this->login_model->menghapus_session();
+	}
+
 	public function login_go()
 	{		
 		$id = $this->input->post('id');
