@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 09:08 AM
+-- Generation Time: May 30, 2023 at 03:01 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -101,7 +101,7 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_telpon`) VALUES
-(1, 'Pengirim A', 'AAA', '000');
+(1, 'Pengirim A', 'Alamat Pengirim A', '000');
 
 -- --------------------------------------------------------
 
@@ -119,16 +119,18 @@ CREATE TABLE `pengiriman` (
   `jumlah` int(255) NOT NULL,
   `berat` int(255) NOT NULL,
   `harga` int(255) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` varchar(255) NOT NULL DEFAULT 'ongoing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 1, 1, 1, '2023-05-23 03:00:39'),
-(2, 1, 1, 1, 'Tuan BB', 'AA', 1, 1, 1, '2023-05-23 03:01:48');
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal`, `status`) VALUES
+(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-05-28 10:01:05', 'selesai'),
+(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-05-24 10:04:34', 'ongoing'),
+(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-05-24 10:02:14', 'ongoing');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +195,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
