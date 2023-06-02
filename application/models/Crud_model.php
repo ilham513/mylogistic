@@ -27,6 +27,7 @@ class Crud_model extends CI_Model{
 		$this->db->from($nama_tabel);
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
+		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
 		$query = $this->db->get();
 		return $query->result();
 	}

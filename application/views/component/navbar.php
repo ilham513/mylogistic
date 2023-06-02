@@ -10,7 +10,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand" href="#">
-          <span class="navbar-brand mb-0 h1">Nama PT <?=$nama?></span>
+          <span class="navbar-brand mb-0 h1"><?=$nama?></span>
         </a>
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">

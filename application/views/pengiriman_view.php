@@ -105,23 +105,26 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					</tr>
 				  </thead>
 				  <tbody>
-				  <?php foreach($array_pengiriman as $pengiriman): ?>
-					<tr>
-					  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
-					  <td><?=$pengiriman->nama_pelanggan?></td>
-					  <td><?=$pengiriman->nama_penerima?></td>
-					  <td><?=$pengiriman->alamat_penerima?></td>
-					  <td><?=$pengiriman->lokasi_gudang?></td>
-					  <td><?=$pengiriman->tanggal?></td>
-					  <td>
-						<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-						<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-danger">HAPUS</span></a>
-					  </td>
-					</tr>
-				  <?php endforeach; ?>
+				<form action="<?=site_url('laporan/bulk_pdf')?>" method="post">
+						  <?php foreach($array_pengiriman as $pengiriman): ?>
+							<tr>
+							  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
+							  <td><?=$pengiriman->nama_pelanggan?></td>
+							  <td><?=$pengiriman->nama_penerima?></td>
+							  <td><?=$pengiriman->alamat_penerima?></td>
+							  <td><?=$pengiriman->lokasi_gudang?></td>
+							  <td><?=$pengiriman->tanggal?></td>
+							  <td>
+								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
+								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger">HAPUS</span></a>
+								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary">PRINT</span></a>
+							  </td>
+							</tr>
+						  <?php endforeach; ?>
 				  </tbody>
-				</table>	
-				
+				</table>
+
+				</form>
 				
 			  </div>
 			</div>

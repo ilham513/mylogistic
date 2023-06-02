@@ -6,14 +6,15 @@ class Laporan extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//model
+		//load model
 		$this->load->model('login_model');
 		$this->load->model('crud_model');
 		
-		//variabel 
-		$this->data['nama'] = 'PT AAA';
+		//variabel nama
+		$this->data['nama'] = 'PT FESA ANTARAN LOGISTIK';
 		$this->data['sidebar'] = 'laporan';
 		
+		//cek session
 		$this->login_model->mengecek_session();
 		
 		include_once APPPATH . '/third_party/fpdf/fpdf.php';
@@ -21,6 +22,7 @@ class Laporan extends CI_Controller {
 
 	public function index()
 	{
+		//variabel nama
 		$data['nama'] = $this->data['nama'];
 		$data['sidebar'] = $this->data['sidebar'];
 		
@@ -29,13 +31,16 @@ class Laporan extends CI_Controller {
 		
 		// var_dump($data['array_laporan']); die();
 		
+		//menampilkan view
 		$this->load->view('laporan_view',$data);
 	}
 	
 	public function pdf($id)
 	{
+		//variabel nama
 		$nama = $this->data['nama'];
 
+		//ambil data laporan
 		$array_laporan = $this->crud_model->mengambil_data_join_id('pengiriman','pengiriman.id_pengiriman',$id);
 		$obj_laporan = $array_laporan[0];
 
@@ -117,6 +122,7 @@ class Laporan extends CI_Controller {
 
 	public function bulk_pdf()
 	{
+		//ambil data laporan centang
 		$array_id = $this->input->post('bulk_id');
 		$nama = $this->data['nama'];
 		

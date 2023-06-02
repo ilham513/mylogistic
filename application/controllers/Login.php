@@ -6,21 +6,24 @@ class login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('login_model');
+		$this->load->model('login_model'); //model login
 	}
 
 	public function index()
 	{
+		//tampilkan view
 		$this->load->view('login');
 	}
 
 	public function destroy()
 	{
+		//untuk logout
 		$this->login_model->menghapus_session();
 	}
 
 	public function login_go()
-	{		
+	{
+		//konfirmasi id dan password
 		$id = $this->input->post('id');
 		$password = md5($this->input->post('password')); //enkripsi md5
 		

@@ -95,9 +95,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th></th>
 					  <th>No Resi</th>
 					  <th>Nama Pengirim</th>
+					  <th>Nama Kurir</th>
+					  <th>Nama Penerima</th>
+					  <th>Alamat Penerima</th>
+					  <th>Jumlah</th>
+					  <th>Berat</th>
+					  <th>Harga</th>
 					  <th>Status Pengiriman</th>
 					  <th>Tanggal diperbarui</th>
-					  <th>Actions</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -106,23 +111,25 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><input name="bulk_id[]" value="<?=$laporan->id_pengiriman?>" type="checkbox"/></td>
 					  <td>JKT0000000<?=$laporan->id_pengiriman?></td>
 					  <td><?=$laporan->nama_pelanggan?></td>
+					  <td><?=$laporan->nama_kurir?></td>
+					  <td><?=$laporan->nama_penerima?></td>
+					  <td><?=$laporan->alamat_penerima?></td>
+					  <td><?=$laporan->jumlah?></td>
+					  <td><?=$laporan->berat?></td>
+					  <td><?=number_format($laporan->harga)?></td>
 					  <td><?=$laporan->status?></td>
 					  <td><?=$laporan->tanggal?></td>
-					  <td>
-						<a href="<?=site_url('laporan/pdf/'.$laporan->id_pengiriman)?>"><span class="fw-bold me-2 text-secondary">Print</span></a>
-					  </td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>
-				</table>	
+				</table>
 
-				<div class="d-grid gap-2 mt-2 d-md-flex justify-content-md-start">
-				  <button class="btn btn-success fw-bold" type="submit">Print Laporan Yang Dicentang</button>
-				</div>
+				<button class="btn btn-success mt-2 fw-bold" type="submit">Print Laporan Yang Dicentang</button>					
 			  </div>
 			</div>
 		  </section>
 	  <!-- Section: Main chart -->
+					
 	  </form>	
 	
     </div>
