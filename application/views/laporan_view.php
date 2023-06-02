@@ -102,7 +102,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Berat</th>
 					  <th>Harga</th>
 					  <th>Status Pengiriman</th>
-					  <th>Tanggal diperbarui</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -118,7 +117,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$laporan->berat?></td>
 					  <td><?=number_format($laporan->harga)?></td>
 					  <td><?=$laporan->status?></td>
-					  <td><?=$laporan->tanggal?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>

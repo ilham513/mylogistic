@@ -88,7 +88,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               <div class="card-body">
                 <div class="d-flex justify-content-between px-md-1">
                   <div>
-                    <h3 class="text-danger">278</h3>
+                    <h3 class="text-danger"><?=$jumlah_pengiriman?></h3>
                     <p class="mb-0">Pengiriman</p>
                   </div>
                   <div class="align-self-center">
@@ -103,7 +103,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               <div class="card-body">
                 <div class="d-flex justify-content-between px-md-1">
                   <div>
-                    <h3 class="text-success">156</h3>
+                    <h3 class="text-success"><?=$jumlah_kurir?></h3>
                     <p class="mb-0">Kurir</p>
                   </div>
                   <div class="align-self-center">
@@ -118,7 +118,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               <div class="card-body">
                 <div class="d-flex justify-content-between px-md-1">
                   <div>
-                    <h3 class="text-warning">999</h3>
+                    <h3 class="text-warning"><?=$jumlah_pelanggan?></h3>
                     <p class="mb-0">Pelanggan</p>
                   </div>
                   <div class="align-self-center">
@@ -133,7 +133,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               <div class="card-body">
                 <div class="d-flex justify-content-between px-md-1">
                   <div>
-                    <h3 class="text-info">423</h3>
+                    <h3 class="text-info"><?=$jumlah_gudang?></h3>
                     <p class="mb-0">Gudang</p>
                   </div>
                   <div class="align-self-center">

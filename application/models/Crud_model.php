@@ -76,4 +76,11 @@ class Crud_model extends CI_Model{
 		redirect('/'.$nama_tabel, 'refresh'); //redir				
 	}
 
+	public function menghitung_jumlah_row($nama_tabel)
+	{
+		$query = $this->db->query("SELECT * FROM $nama_tabel");
+
+		return $query->num_fields();			
+	}
+
 }

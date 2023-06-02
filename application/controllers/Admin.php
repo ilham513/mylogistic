@@ -11,9 +11,16 @@ class Admin extends CI_Controller {
 		
 		//load model login
 		$this->load->model('login_model');
+		$this->load->model('crud_model');
 		
 		//cek session
 		$this->login_model->mengecek_session();
+		
+		//ambil model hitung rows
+		$data['jumlah_pengiriman'] = $this->crud_model->menghitung_jumlah_row('pengiriman');
+		$data['jumlah_kurir'] = $this->crud_model->menghitung_jumlah_row('kurir');
+		$data['jumlah_pelanggan'] = $this->crud_model->menghitung_jumlah_row('pelanggan');
+		$data['jumlah_gudang'] = $this->crud_model->menghitung_jumlah_row('gudang');
 		
 		//tampilkan view
 		$this->load->view('dashboard',$data);
