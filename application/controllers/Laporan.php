@@ -138,38 +138,38 @@ class Laporan extends CI_Controller {
 		 
 		$pdf->Cell(10,15,'',0,1);
 		$pdf->SetFont('Times','B',9);
-		$pdf->Cell(20,7,'No',1,0,'C');
+		$pdf->Cell(10,7,'No',1,0,'C');
 		$pdf->Cell(30,7,'Kode Resi' ,1,0,'C');
-		$pdf->Cell(50,7,'JKT0000000' ,1,0,'C');
+		$pdf->Cell(20,7,'Pengirim' ,1,0,'C');
+		$pdf->Cell(10,7,'Kurir' ,1,0,'C');
+		$pdf->Cell(20,7,'Penerima' ,1,0,'C');
+		$pdf->Cell(20,7,'Alamat' ,1,0,'C');
+		$pdf->Cell(20,7,'Jumlah' ,1,0,'C');
+		$pdf->Cell(20,7,'Berat' ,1,0,'C');
+		$pdf->Cell(20,7,'Harga' ,1,0,'C');
+		$pdf->Cell(20,7,'Status' ,1,0,'C');
 		 
-		foreach($array_id as $id_laporan){
+		foreach($array_id as $i=>$id_laporan){
 			//array data
 			$array_laporan = $this->crud_model->mengambil_data_join_id('pengiriman','pengiriman.id_pengiriman',$id_laporan);
 			$obj_laporan = $array_laporan[0];
 			
+			// var_dump($obj_laporan);die();
+			
 			 
-			$pdf->Cell(10,7,'',0,1);
-			$pdf->SetFont('Times','',10);
-
-			$pdf->Cell(70,6, 'Pengirim: '.$obj_laporan->nama_pelanggan,1,0);
-			$pdf->Cell(70,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);
-			$pdf->Cell(50,6, 'Jumlah: '.$obj_laporan->jumlah,1,0);  
-
 			$pdf->Cell(10,6,'',0,1);
 			$pdf->SetFont('Times','',10);
 
-			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat,1,0);
-			$pdf->Cell(70,6, 'Alamat: '.$obj_laporan->alamat_penerima,1,0);
-			$pdf->Cell(50,6, '',1,0);  
-
-			$pdf->Cell(10,6,'',0,1);
-			$pdf->SetFont('Times','',10);
-
-			$pdf->Cell(50,6, 'Tanggal: '.$obj_laporan->tanggal,1,0);
-			$pdf->Cell(45,6, 'Kurir: '.$obj_laporan->nama_kurir,1,0);
-			$pdf->Cell(45,6, 'Penerima: '.$obj_laporan->nama_penerima,1,0);  
-			$pdf->Cell(50,6, 'Berat: '.$obj_laporan->berat.' KG',1,0);  
-					
+			$pdf->Cell(10,6, $i+1 ,1,0);
+			$pdf->Cell(30,6, 'JKT0000000'.$obj_laporan->id_pengiriman,1,0);
+			$pdf->Cell(20,6, $obj_laporan->nama_pelanggan,1,0);  					
+			$pdf->Cell(10,6, $obj_laporan->nama_kurir,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->nama_penerima,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->alamat_penerima,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->jumlah,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->berat,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->harga,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->status,1,0);  					
 		}
 
 		$pdf->Output();
