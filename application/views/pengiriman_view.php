@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
 	<style>
 	.center {
@@ -115,8 +116,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->lokasi_gudang?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td>
+							<?php /*
 								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
 								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger">HAPUS</span></a>
+							*/?>
 								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary">PRINT</span></a>
 							  </td>
 							</tr>
@@ -183,6 +186,21 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
     
 	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
+				
+		$('th').click(function(){
+			var table = $(this).parents('table').eq(0)
+			var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+			this.asc = !this.asc
+			if (!this.asc){rows = rows.reverse()}
+			for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+		})
+		function comparer(index) {
+			return function(a, b) {
+				var valA = getCellValue(a, index), valB = getCellValue(b, index)
+				return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+			}
+		}
+		function getCellValue(row, index){ return $(row).children('td').eq(index).text() }		
 	</script>
  
 </body>

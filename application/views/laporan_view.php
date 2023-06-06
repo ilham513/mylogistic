@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="<?=base_url()?>css/mdb.min.css" />
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="<?=base_url()?>css/admin.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
 	<style>
 	.center {
@@ -93,15 +94,15 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <thead class="bg-light">
 					<tr>
 					  <th></th>
-					  <th>No Resi</th>
-					  <th>Nama Pengirim</th>
+					  <th>No Resi <i class="fa-solid fa-sort"></i></th>
+					  <th>Nama Pengirim <i class="fa-solid fa-sort"></i></th>
 					  <th>Nama Kurir</th>
 					  <th>Nama Penerima</th>
 					  <th>Alamat Penerima</th>
-					  <th>Jumlah</th>
-					  <th>Berat</th>
-					  <th>Harga</th>
-					  <th>Status Pengiriman</th>
+					  <th>Jumlah <i class="fa-solid fa-sort"></i></th>
+					  <th>Berat <i class="fa-solid fa-sort"></i></th>
+					  <th>Harga <i class="fa-solid fa-sort"></i></th>
+					  <th>Status Pengiriman <i class="fa-solid fa-sort"></i></th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -142,6 +143,21 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
    
 	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
+
+		$('th').click(function(){
+			var table = $(this).parents('table').eq(0)
+			var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+			this.asc = !this.asc
+			if (!this.asc){rows = rows.reverse()}
+			for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+		})
+		function comparer(index) {
+			return function(a, b) {
+				var valA = getCellValue(a, index), valB = getCellValue(b, index)
+				return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
+			}
+		}
+		function getCellValue(row, index){ return $(row).children('td').eq(index).text() }		
 	</script>
 </body>
 
