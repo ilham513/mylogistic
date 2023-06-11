@@ -88,7 +88,13 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 			  <div class="card-header py-3">
 				<h5 class="mb-0"><strong>Laporan</strong></h5>
 			  </div>
-			  <div class="card-body">
+			  <div class="card-body">			  
+				<figure class="text-end">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+					  <small>Pilih tanggal</small>
+					</button>
+				</figure>				
 				
 				<table class="table align-middle mb-0 bg-white">
 				  <thead class="bg-light">
@@ -134,6 +140,37 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
     </div>
   </main>
   <!--Main layout-->
+  
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<form action="<?=site_url('laporan/interval')?>" method="get">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Tentukan tanggal...</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				<label for="form7Example1">Tanggal Awal</label>
+				<div class="form-outline mb-3">
+				  <input name="tanggal_awal" type="date" id="form7Example1" class="form-control" />
+				</div>		  
+
+				<label class="form-label" for="form7Example1">Tanggal Akhir</label>
+				<div class="form-outline mb-3">
+				  <input name="tanggal_akhir" type="date" id="form7Example1" class="form-control" />
+				</div>		  
+			  
+			  </div>
+			  <div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Kirim</button>
+			  </div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+ 
 
   <!-- MDB -->
   <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>

@@ -35,6 +35,24 @@ class Laporan extends CI_Controller {
 		$this->load->view('laporan_view',$data);
 	}
 	
+	public function interval()
+	{
+		//variabel nama
+		$data['nama'] = $this->data['nama'];
+		$data['sidebar'] = $this->data['sidebar'];
+		
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+		
+		//ambil data
+		$data['array_laporan'] = $this->crud_model->mengambil_data_join_interval('pengiriman', $tanggal_awal, $tanggal_akhir);
+		
+		// var_dump($data['array_laporan']); die();
+		
+		//menampilkan view
+		$this->load->view('laporan_view',$data);
+	}
+	
 	public function pdf($id)
 	{
 		//variabel nama
