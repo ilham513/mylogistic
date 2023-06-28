@@ -110,8 +110,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$pelanggan->alamat?></td>
 					  <td><?=$pelanggan->no_telpon?></td>
 					  <td>
-						<a href="<?=site_url('pelanggan/edit/'.$pelanggan->id_pelanggan)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-						<a href="<?=site_url('pelanggan/hapus/'.$pelanggan->id_pelanggan)?>"><span class="fw-bold text-danger">HAPUS</span></a>
+						<a href="<?=site_url('pelanggan/edit/'.$pelanggan->id_pelanggan)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$pelanggan->nama_pelanggan?>');">EDIT</span></a>
+						<a href="<?=site_url('pelanggan/hapus/'.$pelanggan->id_pelanggan)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$pelanggan->nama_pelanggan?>');">HAPUS</span></a>
 					  </td>
 					</tr>
 				   <?php endforeach; ?>
@@ -135,6 +135,22 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
     
 	<script>  
 		menyalakan_sidenav('pelanggan');
+		
+		function editchecked(nama_pelanggan){
+			if(confirm("Edit data "+nama_pelanggan+"?")){
+				return true;
+			}else{
+				return false;  
+			} 
+		}
+		
+		function deletechecked(nama_pelanggan){
+			if(confirm("Hapus data "+nama_pelanggan+"?")){
+				return true;
+			}else{
+				return false;  
+			} 
+		}
 	</script>
 
 </body>

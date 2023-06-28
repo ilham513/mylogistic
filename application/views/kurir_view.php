@@ -110,8 +110,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?= $kurir->merek_kendaraan ?></td>
 					  <td><?= $kurir->no_telpon ?></td>
 					  <td>
-						<a href="<?=site_url('kurir/edit/'.$kurir->id_kurir)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-						<a href="<?=site_url('kurir/hapus/'.$kurir->id_kurir)?>"><span class="fw-bold text-danger">HAPUS</span></a>
+						<a href="<?=site_url('kurir/edit/'.$kurir->id_kurir)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$kurir->nama_kurir?>');">EDIT</span></a>
+						<a href="<?=site_url('kurir/hapus/'.$kurir->id_kurir)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$kurir->nama_kurir?>');">HAPUS</span></a>
 					  </td>
 					</tr>
 					<?php endforeach; ?>
@@ -135,6 +135,22 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   
   	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
+		
+		function editchecked(nama_pelanggan){
+			if(confirm("Edit data "+nama_pelanggan+"?")){
+				return true;
+			}else{
+				return false;  
+			} 
+		}
+		
+		function deletechecked(nama_pelanggan){
+			if(confirm("Hapus data "+nama_pelanggan+"?")){
+				return true;
+			}else{
+				return false;  
+			} 
+		}
 	</script>
 
 </body>
