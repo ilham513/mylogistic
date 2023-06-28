@@ -101,6 +101,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Nama Penerima</th>
 					  <th>Alamat</th>
 					  <th>Lokasi Terakhir</th>
+					  <th>Status</th>
+					  <th>Tanggal pengiriman</th>
 					  <th>Tanggal diperbarui</th>
 					  <th>Actions</th>
 					</tr>
@@ -114,6 +116,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
+							  <td><?=$pengiriman->status?></td>
+							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td>
 							<?php /*

@@ -15,8 +15,6 @@ class Crud_model extends CI_Model{
 	{
 		$this->db->select('*');
 		$this->db->from($nama_tabel);
-		// $this->db->join('kuesioner', 'alumni.npm = kuesioner.npm', 'left');
-		// $this->db->where('alumni.npm', $par);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -48,7 +46,6 @@ class Crud_model extends CI_Model{
 	{		
 		$this->db->select('*');
 		$this->db->from($nama_tabel);
-		// $this->db->join('kuesioner', 'alumni.npm = kuesioner.npm', 'left');
 		$this->db->where($nama_colum, $id);
 		$query = $this->db->get();
 		return $query->result();
