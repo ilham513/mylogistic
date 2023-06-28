@@ -30,6 +30,23 @@ class Crud_model extends CI_Model{
 		return $query->result();
 	}
 
+	public function mengambil_data_join_interval($nama_tabel, $tanggal_awal, $tanggal_akhir)
+	{
+		$tanggal_awal = "'$tanggal_awal 00:00:01'";
+		$tanggal_akhir = "'$tanggal_akhir 00:00:01'";
+		
+		// var_dump($tanggal_akhir);die();
+		
+		$this->db->select('*');
+		$this->db->from($nama_tabel);
+		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
+		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
+		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
+		$this->db->where('tanggal BETWEEN ' . $tanggal_awal . ' AND ' . $tanggal_akhir);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function mengambil_data_join_id($nama_tabel, $nama_colum, $id)
 	{
 		$this->db->select('*');
