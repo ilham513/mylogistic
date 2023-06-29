@@ -115,4 +115,20 @@ class Pengiriman extends CI_Controller {
 		var_dump($_POST);
 	}
 
+	public function interval()
+	{
+		//variabel nama
+		$data['nama'] = $this->data['nama'];
+		$data['sidebar'] = $this->data['sidebar'];
+		
+		$tanggal_awal = $this->input->get('tanggal_awal');
+		$tanggal_akhir = $this->input->get('tanggal_akhir');
+		
+		//ambil data
+		$data['array_pengiriman'] = $this->crud_model->mengambil_data_join_interval('pengiriman', $tanggal_awal, $tanggal_akhir);
+		
+		//menampilkan view
+		$this->load->view('pengiriman_view',$data);
+	}
+
 }

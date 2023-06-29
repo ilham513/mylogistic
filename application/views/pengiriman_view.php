@@ -89,21 +89,26 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<h5 class="mb-0"><strong>Pengiriman</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-end">
-				  <a href="<?=site_url('pengiriman/add')?>"><button class="btn btn-success fw-bold" type="button">Tambah Pengiriman</button></a>
+				<div class="d-grid gap-2 mb-3 d-md-flex justify-content-md-between">
+				  <!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+					  <small>Pilih tanggal</small>
+					</button>
+					
+					<a href="<?=site_url('pengiriman/add')?>"><button class="btn btn-success fw-bold" type="button">Tambah Pengiriman</button></a>
 				</div>
 				
 				<table class="table align-middle mb-0 bg-white">
 				  <thead class="bg-light">
 					<tr>
 					  <th>No Resi</th>
-					  <th>Nama Pengirim</th>
+					  <th>Nama Pengirim <i class="fa-solid fa-sort"></i></th>
 					  <th>Nama Penerima</th>
 					  <th>Alamat</th>
-					  <th>Lokasi Terakhir</th>
-					  <th>Status</th>
-					  <th>Tanggal pengiriman</th>
-					  <th>Tanggal diperbarui</th>
+					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
+					  <th>Status <i class="fa-solid fa-sort"></i></th>
+					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
+					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					  <th>Actions</th>
 					</tr>
 				  </thead>
@@ -120,10 +125,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td>
-							<?php /*
 								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
 								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger">HAPUS</span></a>
-							*/?>
 								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary">PRINT</span></a>
 							  </td>
 							</tr>
@@ -186,6 +189,37 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript" src="<?=base_url()?>js/admin.js"></script>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<form action="<?=site_url('pengiriman/interval')?>" method="get">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Tentukan tanggal...</h5>
+				<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				<label for="form7Example1">Tanggal Awal</label>
+				<div class="form-outline mb-3">
+				  <input name="tanggal_awal" type="date" id="form7Example1" class="form-control" />
+				</div>		  
+
+				<label class="form-label" for="form7Example1">Tanggal Akhir</label>
+				<div class="form-outline mb-3">
+				  <input name="tanggal_akhir" type="date" id="form7Example1" class="form-control" />
+				</div>		  
+			  
+			  </div>
+			  <div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Kirim</button>
+			  </div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+
   
     
 	<script>  

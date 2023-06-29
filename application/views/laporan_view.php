@@ -108,6 +108,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Jumlah <i class="fa-solid fa-sort"></i></th>
 					  <th>Berat <i class="fa-solid fa-sort"></i></th>
 					  <th>Harga <i class="fa-solid fa-sort"></i></th>
+					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
+					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					  <th>Status Pengiriman <i class="fa-solid fa-sort"></i></th>
 					</tr>
 				  </thead>
@@ -123,13 +125,15 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$laporan->jumlah?></td>
 					  <td><?=$laporan->berat?></td>
 					  <td><?=number_format($laporan->harga)?></td>
+					  <td><?=$laporan->tanggal_pengiriman?></td>
+					  <td><?=$laporan->tanggal?></td>					  
 					  <td><?=$laporan->status?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>
 				</table>
 
-				<button class="btn btn-success mt-2 fw-bold" type="submit">Print Laporan Yang Dicentang</button>					
+				<button class="btn btn-success mt-2 fw-bold" id="checkBtn" type="submit">Print Laporan Yang Dicentang</button>					
 			  </div>
 			</div>
 		  </section>
@@ -181,6 +185,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 	<script>  
 		menyalakan_sidenav('<?=$sidebar?>');
 
+		//javascript susun tabel
 		$('th').click(function(){
 			var table = $(this).parents('table').eq(0)
 			var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
@@ -194,7 +199,19 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB)
 			}
 		}
-		function getCellValue(row, index){ return $(row).children('td').eq(index).text() }		
+		function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+
+		//jquery harus ceklis satu
+		$(document).ready(function () {
+			$('#checkBtn').click(function() {
+				checked = $("input[type=checkbox]:checked").length;
+
+				if(!checked) {
+					alert("Pilih salah satu nomor resi yang akan dicetak terlebih dahulu...");
+					return false;
+				}
+			});
+		});
 	</script>
 </body>
 
