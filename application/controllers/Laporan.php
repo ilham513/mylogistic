@@ -152,8 +152,14 @@ class Laporan extends CI_Controller {
 		$pdf->AddPage(); 
 
 		$pdf->SetFont('Times','B',13);
-		$pdf->Cell(200,10,'Laporan Pengiriman',0,0,'C');
-		 
+		$pdf->Cell(200,10,'Laporan Pengiriman Barang',0,0,'C');
+			
+		// Line break
+		$pdf->Ln(7);		
+
+		$pdf->SetFont('Times','B',13);
+		$pdf->Cell(200,10,$this->data['nama'],0,0,'C');
+			 
 		$pdf->Cell(10,15,'',0,1);
 		$pdf->SetFont('Times','B',9);
 		$pdf->Cell(10,7,'No',1,0,'C');
@@ -189,6 +195,18 @@ class Laporan extends CI_Controller {
 			$pdf->Cell(20,6, $obj_laporan->harga,1,0);  					
 			$pdf->Cell(20,6, $obj_laporan->status,1,0);  					
 		}
+
+		// Line break
+		$pdf->Ln(17);		
+
+		$pdf->SetFont('Times','',10);
+		$pdf->Cell(300,10,'Bogor, '.$this->crud_model->tanggal_indo(date("Y-m-d")),0,0,'C');
+
+		// Line break
+		$pdf->Ln(26);		
+
+		$pdf->SetFont('Times','',10);
+		$pdf->Cell(284,10,'TTD:   ',0,0,'C');
 
 		$pdf->Output();
 		
