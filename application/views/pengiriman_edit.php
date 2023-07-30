@@ -132,6 +132,17 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
+					<select name="id_barang" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					  <option selected disabled>Pilih Nama Barang</option>
+					  <?php foreach($array_barang as $barang): ?>
+					  <option <?=$barang->id_barang == $obj_pengiriman->id_barang ? 'selected' : '';?> value="<?=$barang->id_barang?>"><?=$barang->nama_barang?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  
+				  <div class="form-outline mb-4">
 					<input name="jumlah" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->jumlah?>" id="form6Example3" placeholder="Jumlah" class="form-control" />
 				  </div>
 
@@ -148,8 +159,9 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<select name="status" class="form-select" aria-label="Default select example">
-					  <option value="ongoing" selected>ongoing</option>
-					  <option value="selesai">selesai</option>
+					<option value="onproses" selected>Onproses</option>
+					  <option value="ongoing" selected>OnGoing</option>
+					  <option value="selesai">Sukses</option>
 					</select>					
 				  </div>
 

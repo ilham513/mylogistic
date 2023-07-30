@@ -117,7 +117,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <?php foreach($array_laporan as $laporan): ?>
 					<tr>
 					  <td><input name="bulk_id[]" value="<?=$laporan->id_pengiriman?>" type="checkbox"/></td>
-					  <td>JKT0000000<?=$laporan->id_pengiriman?></td>
+					  <td>JKT00<?=$laporan->id_pengiriman?></td>
 					  <td><?=$laporan->nama_pelanggan?></td>
 					  <td><?=$laporan->nama_kurir?></td>
 					  <td><?=$laporan->nama_penerima?></td>

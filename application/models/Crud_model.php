@@ -26,6 +26,7 @@ class Crud_model extends CI_Model{
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
 		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
+		$this->db->join('barang', 'pengiriman.id_barang = barang.id_barang');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -54,6 +55,7 @@ class Crud_model extends CI_Model{
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
 		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
+		$this->db->join('barang', 'pengiriman.id_barang = barang.id_barang');
 		$this->db->where($nama_colum, $id);
 		$query = $this->db->get();
 		return $query->result();

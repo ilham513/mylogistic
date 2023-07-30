@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 03:01 AM
+-- Generation Time: Jun 30, 2023 at 05:53 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -38,7 +38,8 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
-('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3');
+('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3'),
+('gudang', 'Gudang', '202446dd1d6028084426867365b0c7a1');
 
 -- --------------------------------------------------------
 
@@ -119,6 +120,7 @@ CREATE TABLE `pengiriman` (
   `jumlah` int(255) NOT NULL,
   `berat` int(255) NOT NULL,
   `harga` int(255) NOT NULL,
+  `tanggal_pengiriman` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(255) NOT NULL DEFAULT 'ongoing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -127,10 +129,10 @@ CREATE TABLE `pengiriman` (
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal`, `status`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-05-28 10:01:05', 'selesai'),
-(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-05-24 10:04:34', 'ongoing'),
-(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-05-24 10:02:14', 'ongoing');
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `status`) VALUES
+(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-06-28 11:20:10', '2023-05-28 10:01:05', 'selesai'),
+(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-06-28 11:20:10', '2023-05-24 10:04:34', 'ongoing'),
+(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-06-28 11:20:10', '2023-05-24 10:02:14', 'ongoing');
 
 --
 -- Indexes for dumped tables

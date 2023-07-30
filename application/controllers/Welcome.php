@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
 		$data['nama'] = $this->data['nama'];
 		
 		//saring id pengiriman
-		$id_pengiriman = substr($this->input->get('resi_pengiriman'),10);
+		$id_pengiriman = substr($this->input->get('resi_pengiriman'),5);
 			
 		//tampilkan pengiriman
 		$data['array_pengiriman'] = $this->crud_model->mengambil_data_join_id('pengiriman','id_pengiriman',$id_pengiriman);

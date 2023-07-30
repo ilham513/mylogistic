@@ -115,8 +115,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <tbody>
 				<form action="<?=site_url('laporan/bulk_pdf')?>" method="post">
 						  <?php foreach($array_pengiriman as $pengiriman): ?>
-							<tr>
-							  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
+
+							  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT00<?=$pengiriman->id_pengiriman?></a></td>
 							  <td><?=$pengiriman->nama_pelanggan?></td>
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
@@ -148,12 +148,16 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 	  <div class="modal-dialog">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Detail JKT0000000<?=$pengiriman->id_pengiriman?></h5>
+			<h5 class="modal-title" id="exampleModalLabel">Detail JKT00<?=$pengiriman->id_pengiriman?></h5>
 			<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">				
 				<table class="table align-middle mb-0 bg-white">
 				  <tbody>
+				  <tr>
+					  <td>Barang</td>
+					  <td>: <?=($pengiriman->nama_barang)?></td>
+					</tr>
 					<tr>
 					  <td>Harga</td>
 					  <td>: Rp <?=number_format($pengiriman->harga)?></td>
@@ -168,7 +172,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					</tr>
 					<tr class="fw-bold bg-light">
 					  <td>Total</td>
-					  <td>: Rp <?=number_format($pengiriman->harga * $pengiriman->jumlah)?></td>
+					  <td>: Rp <?=number_format($pengiriman->harga * $pengiriman->berat)?></td>
 					</tr>
 				  </tbody>
 				</table>	
