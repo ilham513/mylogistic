@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 05:53 AM
+-- Generation Time: Jul 30, 2023 at 06:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -44,6 +44,25 @@ INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `barang`
+--
+
+CREATE TABLE `barang` (
+  `id_barang` int(50) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `nama_barang`) VALUES
+(1, 'Farmasi'),
+(2, 'Elektronik');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gudang`
 --
 
@@ -58,8 +77,8 @@ CREATE TABLE `gudang` (
 --
 
 INSERT INTO `gudang` (`id_gudang`, `lokasi_gudang`, `no_telpon`) VALUES
-(1, 'Gudang A', '0'),
-(2, 'Gudang B', '0');
+(1, 'Gudang Semarang', '081283742972'),
+(4, 'Cabang surabaya', '081293872863');
 
 -- --------------------------------------------------------
 
@@ -79,10 +98,8 @@ CREATE TABLE `kurir` (
 --
 
 INSERT INTO `kurir` (`id_kurir`, `nama_kurir`, `merek_kendaraan`, `no_telpon`) VALUES
-(1, 'AB', 'A', '000'),
-(2, 'BA', 'B', '0000'),
-(3, 'AAA', 'A', '000'),
-(5, 'BBBB', 'B', '0');
+(1, 'Sukiman', 'B 9900 KXT', '081283742972'),
+(6, 'Anwar', 'B 9011 SCE', '081293819345');
 
 -- --------------------------------------------------------
 
@@ -102,7 +119,8 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_telpon`) VALUES
-(1, 'Pengirim A', 'Alamat Pengirim A', '000');
+(1, 'Ibu Yuliana', 'Perumnas 3', '0812931937'),
+(3, 'Gudang Brosur', 'Cilandak', '08129837123');
 
 -- --------------------------------------------------------
 
@@ -115,6 +133,8 @@ CREATE TABLE `pengiriman` (
   `id_gudang` int(255) NOT NULL,
   `id_kurir` int(255) NOT NULL,
   `id_pelanggan` int(255) NOT NULL,
+  `id_barang` int(50) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL,
   `nama_penerima` varchar(255) NOT NULL,
   `alamat_penerima` varchar(255) NOT NULL,
   `jumlah` int(255) NOT NULL,
@@ -129,10 +149,9 @@ CREATE TABLE `pengiriman` (
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `status`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-06-28 11:20:10', '2023-05-28 10:01:05', 'selesai'),
-(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-06-28 11:20:10', '2023-05-24 10:04:34', 'ongoing'),
-(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-06-28 11:20:10', '2023-05-24 10:02:14', 'ongoing');
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `id_barang`, `nama_barang`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `status`) VALUES
+(1, 4, 6, 3, 1, '', 'Ibu Santi', 'Jl Raya Daan Mogot', 100, 30000, 1050, '2023-07-29 13:09:09', '2023-07-29 13:20:14', 'onproses'),
+(9, 4, 1, 1, 2, '', 'Robert', 'BanjarBaru', 12, 50, 3000, '2023-07-29 14:12:24', '2023-07-29 14:12:24', 'ongoing');
 
 --
 -- Indexes for dumped tables
@@ -143,6 +162,12 @@ INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelangga
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id_barang`);
 
 --
 -- Indexes for table `gudang`
@@ -167,6 +192,8 @@ ALTER TABLE `pelanggan`
 --
 ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id_pengiriman`),
+  ADD UNIQUE KEY `id_pelanggan_2` (`id_pelanggan`),
+  ADD UNIQUE KEY `id_barang` (`id_barang`),
   ADD KEY `id_gudang` (`id_gudang`),
   ADD KEY `id_kurir` (`id_kurir`),
   ADD KEY `id_pelanggan` (`id_pelanggan`);
@@ -176,28 +203,34 @@ ALTER TABLE `pengiriman`
 --
 
 --
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id_barang` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
-  MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelanggan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
