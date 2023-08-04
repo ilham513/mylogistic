@@ -193,7 +193,7 @@ class Laporan extends CI_Controller {
 			$pdf->Cell(20,6, $obj_laporan->jumlah,1,0);  					
 			$pdf->Cell(20,6, $obj_laporan->berat,1,0);  					
 			$pdf->Cell(20,6, $obj_laporan->harga,1,0);  					
-			$pdf->Cell(20,6, $obj_laporan->status,1,0);  					
+			$pdf->Cell(20,6, $obj_laporan->keterangan,1,0);  					
 		}
 
 		// Line break

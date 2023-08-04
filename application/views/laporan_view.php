@@ -127,7 +127,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=number_format($laporan->harga)?></td>
 					  <td><?=$laporan->tanggal_pengiriman?></td>
 					  <td><?=$laporan->tanggal?></td>					  
-					  <td><?=$laporan->status?></td>
+					  <td><?=$laporan->id_status == 0 ? 'ongoing' : 'terkirim';?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>

@@ -108,8 +108,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?= $barang->nama_barang ?></td>
 					  
 					  <td>
-						<a href="<?=site_url('barang/edit/'.$barang->id_barang)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$barang->nama_barang?>');">EDIT</span></a>
-						<a href="<?=site_url('barang/hapus/'.$barang->id_barang)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$barang->nama_barang?>');">HAPUS</span></a>
+						<a href="<?=site_url('barang/edit/'.$barang->id_barang)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$barang->nama_barang?>');"><i class="fa-solid fa-pen-to-square"></i></span></a>
+						<a href="<?=site_url('barang/hapus/'.$barang->id_barang)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$barang->nama_barang?>');"><i class="fa-solid fa-trash"></i></span></a>
 					  </td>
 					</tr>
 					<?php endforeach; ?>

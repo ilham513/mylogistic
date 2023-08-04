@@ -107,6 +107,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Alamat</th>
 					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
 					  <th>Status <i class="fa-solid fa-sort"></i></th>
+					  <th>Keterangan <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					  <th>Actions</th>
@@ -121,13 +122,14 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
-							  <td><?=$pengiriman->status?></td>
+							  <td><?=$pengiriman->id_status == 0 ? 'ongoing' : 'terkirim';?></td>
+							  <td><?=$pengiriman->keterangan?></td>
 							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td>
-								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger">HAPUS</span></a>
-								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary">PRINT</span></a>
+								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary"><i class="fa-solid fa-pen-to-square"></i></span></a>
+								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger"><i class="fa-solid fa-trash"></i></span></a>
+								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary"><i class="fa-solid fa-print"></i></span></a>
 							  </td>
 							</tr>
 						  <?php endforeach; ?>
