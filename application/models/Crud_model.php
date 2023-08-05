@@ -26,6 +26,8 @@ class Crud_model extends CI_Model{
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
 		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
+		$this->db->join('barang', 'pengiriman.id_barang = barang.id_barang');
+		$this->db->join('status', 'pengiriman.id_status = status.id_status');
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -40,6 +42,7 @@ class Crud_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from($nama_tabel);
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
+		$this->db->join('status', 'pengiriman.id_status = status.id_status');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
 		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
 		$this->db->where('tanggal BETWEEN ' . $tanggal_awal . ' AND ' . $tanggal_akhir);
@@ -53,6 +56,7 @@ class Crud_model extends CI_Model{
 		$this->db->from($nama_tabel);
 		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
 		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
+		$this->db->join('status', 'pengiriman.id_status = status.id_status');		
 		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
 		$this->db->where($nama_colum, $id);
 		$query = $this->db->get();

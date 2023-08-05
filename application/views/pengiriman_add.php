@@ -130,6 +130,16 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
+					<select name="id_barang" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Nama Barang...</option>
+					  <?php foreach($array_barang as $barang): ?>
+					  <option value="<?=$barang->id_barang?>"><?=$barang->nama_barang?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
 					<input name="jumlah" type="number" id="form6Example3" placeholder="Jumlah" class="form-control" />
 				  </div>
 

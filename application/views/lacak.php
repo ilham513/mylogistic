@@ -124,7 +124,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$pengiriman->alamat_penerima?></td>
 					  <td><?=$pengiriman->lokasi_gudang?></td>
 					  <td><?=$pengiriman->tanggal?></td>
-					  <td><?=$pengiriman->status?></td>
+					  <td><?=$pengiriman->nama_status?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>

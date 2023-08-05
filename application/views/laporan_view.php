@@ -110,7 +110,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Harga <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
-					  <th>Status Pengiriman <i class="fa-solid fa-sort"></i></th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -127,7 +126,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=number_format($laporan->harga)?></td>
 					  <td><?=$laporan->tanggal_pengiriman?></td>
 					  <td><?=$laporan->tanggal?></td>					  
-					  <td><?=$laporan->status?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>

@@ -106,9 +106,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Nama Penerima</th>
 					  <th>Alamat</th>
 					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
-					  <th>Status <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
+					  <th>Status <i class="fa-solid fa-sort"></i></th>
+					  <th>Keterangan <i class="fa-solid fa-sort"></i></th>
 					  <th>Actions</th>
 					</tr>
 				  </thead>
@@ -121,9 +122,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
-							  <td><?=$pengiriman->status?></td>
 							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
+							  <td><?=$pengiriman->nama_status?></td>
+							  <td><?=$pengiriman->keterangan?></td>
 							  <td>
 								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary"><i class="fa-solid fa-pen-to-square"></i></span></a>
 								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger"><i class="fa-solid fa-trash"></i></span></a>

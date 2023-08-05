@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2023 at 06:03 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Aug 05, 2023 at 12:35 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,7 +31,7 @@ CREATE TABLE `akun` (
   `id` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `akun`
@@ -44,6 +43,27 @@ INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `barang`
+--
+
+CREATE TABLE `barang` (
+  `id_barang` int(255) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `nama_barang`) VALUES
+(1, 'Barang A'),
+(2, 'Barang B'),
+(3, 'Barang C'),
+(4, 'Barand D');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gudang`
 --
 
@@ -51,7 +71,7 @@ CREATE TABLE `gudang` (
   `id_gudang` int(255) NOT NULL,
   `lokasi_gudang` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gudang`
@@ -72,7 +92,7 @@ CREATE TABLE `kurir` (
   `nama_kurir` varchar(255) NOT NULL,
   `merek_kendaraan` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kurir`
@@ -95,7 +115,7 @@ CREATE TABLE `pelanggan` (
   `nama_pelanggan` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pelanggan`
@@ -122,17 +142,39 @@ CREATE TABLE `pengiriman` (
   `harga` int(255) NOT NULL,
   `tanggal_pengiriman` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` varchar(255) NOT NULL DEFAULT 'ongoing'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_barang` int(255) NOT NULL,
+  `id_status` int(255) NOT NULL,
+  `keterangan` varchar(255) NOT NULL DEFAULT 'Barang siap untuk dikirim'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `status`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-05-28 10:01:05', 'selesai'),
-(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-05-24 10:04:34', 'ongoing'),
-(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-05-24 10:02:14', 'ongoing');
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_barang`, `id_status`, `keterangan`) VALUES
+(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-05 10:32:43', 1, 1, 'Barang sampai di gudang A'),
+(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-05 10:33:01', 1, 1, 'Kurir resign wkwk'),
+(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-05 10:05:17', 2, 1, 'Barang siap untuk dikirim'),
+(6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id_status` int(255) NOT NULL,
+  `nama_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id_status`, `nama_status`) VALUES
+(1, 'Ongoing'),
+(2, 'Terkirim');
 
 --
 -- Indexes for dumped tables
@@ -143,6 +185,12 @@ INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelangga
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id_barang`);
 
 --
 -- Indexes for table `gudang`
@@ -169,11 +217,25 @@ ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id_pengiriman`),
   ADD KEY `id_gudang` (`id_gudang`),
   ADD KEY `id_kurir` (`id_kurir`),
-  ADD KEY `id_pelanggan` (`id_pelanggan`);
+  ADD KEY `id_pelanggan` (`id_pelanggan`),
+  ADD KEY `id_barang` (`id_barang`),
+  ADD KEY `id_status` (`id_status`);
+
+--
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id_status`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id_barang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `gudang`
@@ -197,7 +259,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `id_status` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -209,7 +277,9 @@ ALTER TABLE `pengiriman`
 ALTER TABLE `pengiriman`
   ADD CONSTRAINT `pengiriman_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`),
   ADD CONSTRAINT `pengiriman_ibfk_2` FOREIGN KEY (`id_gudang`) REFERENCES `gudang` (`id_gudang`),
-  ADD CONSTRAINT `pengiriman_ibfk_3` FOREIGN KEY (`id_kurir`) REFERENCES `kurir` (`id_kurir`);
+  ADD CONSTRAINT `pengiriman_ibfk_3` FOREIGN KEY (`id_kurir`) REFERENCES `kurir` (`id_kurir`),
+  ADD CONSTRAINT `pengiriman_ibfk_4` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
+  ADD CONSTRAINT `pengiriman_ibfk_5` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

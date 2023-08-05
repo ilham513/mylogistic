@@ -147,10 +147,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="status" class="form-select" aria-label="Default select example">
-					  <option value="ongoing" selected>ongoing</option>
-					  <option value="selesai">selesai</option>
-					</select>					
+					<input name="keterangan" type="text" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
 				  </div>
 
 				  <!-- Submit button -->
