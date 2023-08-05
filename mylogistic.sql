@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2023 at 03:09 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Aug 05, 2023 at 06:03 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +32,7 @@ CREATE TABLE `akun` (
   `id` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `akun`
@@ -50,7 +51,7 @@ CREATE TABLE `gudang` (
   `id_gudang` int(255) NOT NULL,
   `lokasi_gudang` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gudang`
@@ -71,7 +72,7 @@ CREATE TABLE `kurir` (
   `nama_kurir` varchar(255) NOT NULL,
   `merek_kendaraan` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kurir`
@@ -94,7 +95,7 @@ CREATE TABLE `pelanggan` (
   `nama_pelanggan` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pelanggan`
@@ -122,7 +123,7 @@ CREATE TABLE `pengiriman` (
   `tanggal_pengiriman` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(255) NOT NULL DEFAULT 'ongoing'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengiriman`
