@@ -125,9 +125,9 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td>
-								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary">EDIT</span></a>
-								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger">HAPUS</span></a>
-								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary">PRINT</span></a>
+								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary"><i class="fa-solid fa-pen-to-square"></i></span></a>
+								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger"><i class="fa-solid fa-trash"></i></span></a>
+								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary"><i class="fa-solid fa-print"></i></span></a>
 							  </td>
 							</tr>
 						  <?php endforeach; ?>

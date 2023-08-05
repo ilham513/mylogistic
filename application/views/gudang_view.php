@@ -108,8 +108,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$gudang->lokasi_gudang?></td>
 					  <td><?=$gudang->no_telpon?></td>
 					  <td>
-						<a href="<?=site_url('gudang/edit/'.$gudang->id_gudang)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$gudang->lokasi_gudang?>');">EDIT</span></a>
-						<a href="<?=site_url('gudang/hapus/'.$gudang->id_gudang)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$gudang->lokasi_gudang?>');">HAPUS</span></a>
+						<a href="<?=site_url('gudang/edit/'.$gudang->id_gudang)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$gudang->lokasi_gudang?>');"><i class="fa-solid fa-pen-to-square"></i></span></a>
+						<a href="<?=site_url('gudang/hapus/'.$gudang->id_gudang)?>"><span class="fw-bold text-danger" onclick="return deletechecked('<?=$gudang->lokasi_gudang?>');"><i class="fa-solid fa-trash"></i></span></a>
 					  </td>
 					</tr>
 				<?php endforeach; ?>

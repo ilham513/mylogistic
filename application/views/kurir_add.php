@@ -98,7 +98,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<input name="merek_kendaraan" type="text" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">Merk Kendaraan</label>
+					<label class="form-label" for="form6Example3">Nomor Polisi</label>
 				  </div>
 
 				  <!-- input -->
