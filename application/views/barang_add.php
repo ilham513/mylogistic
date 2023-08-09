@@ -87,17 +87,20 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<h5 class="mb-0"><strong>Tambah Barang</strong></h5>
 			  </div>
 			  <div class="card-body">
-				<form>
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<input name="nama_barang" type="text" id="form6Example3" class="form-control" />
-					<label class="form-label" for="form6Example3">Nama</label>
+					<label class="form-label" for="form6Example3">Nama Barang</label>
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="jenis_barang" type="text" id="form6Example3" class="form-control" />
+					<label class="form-label" for="form6Example3">Jenis Barang</label>
 				  </div>
 
 				  <!-- Submit button -->
-				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>
-				</form>				
-				
+				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>		
 			  </div>
 			</div>
 		  </section>

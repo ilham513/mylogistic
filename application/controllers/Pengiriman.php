@@ -80,6 +80,7 @@ class Pengiriman extends CI_Controller {
 		$data['array_gudang'] = $this->crud_model->mengambil_data('gudang');
 		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
 		$data['array_pelanggan'] = $this->crud_model->mengambil_data('pelanggan');
+		$data['array_status'] = $this->crud_model->mengambil_data('status');
 
 		//ambil model data
 		$data['array_pengiriman'] = $this->crud_model->mengambil_data_id('pengiriman','id_pengiriman',$id);
@@ -102,6 +103,7 @@ class Pengiriman extends CI_Controller {
 			'jumlah' => $this->input->post('jumlah'),		
 			'berat' => $this->input->post('berat'),		
 			'harga' => $this->input->post('harga'),	
+			'id_status' => $this->input->post('id_status'),	
 			'keterangan' => $this->input->post('keterangan')	
 		);
 

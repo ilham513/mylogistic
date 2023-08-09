@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2023 at 12:35 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Aug 09, 2023 at 10:13 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,14 +32,15 @@ CREATE TABLE `akun` (
   `id` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `akun`
 --
 
 INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
-('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3');
+('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3'),
+('gudang', 'gudang', '202446dd1d6028084426867365b0c7a1');
 
 -- --------------------------------------------------------
 
@@ -48,18 +50,19 @@ INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
 
 CREATE TABLE `barang` (
   `id_barang` int(255) NOT NULL,
-  `nama_barang` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nama_barang` varchar(255) NOT NULL,
+  `jenis_barang` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`) VALUES
-(1, 'Barang A'),
-(2, 'Barang B'),
-(3, 'Barang C'),
-(4, 'Barand D');
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `jenis_barang`) VALUES
+(1, 'Barang AA', 'Jenis AA'),
+(2, 'Barang B', 'Jenis B'),
+(3, 'Barang C', 'Jenis C'),
+(4, 'Barand D', 'Jenis D');
 
 -- --------------------------------------------------------
 
@@ -71,7 +74,7 @@ CREATE TABLE `gudang` (
   `id_gudang` int(255) NOT NULL,
   `lokasi_gudang` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gudang`
@@ -92,7 +95,7 @@ CREATE TABLE `kurir` (
   `nama_kurir` varchar(255) NOT NULL,
   `merek_kendaraan` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kurir`
@@ -115,7 +118,7 @@ CREATE TABLE `pelanggan` (
   `nama_pelanggan` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pelanggan`
@@ -145,16 +148,16 @@ CREATE TABLE `pengiriman` (
   `id_barang` int(255) NOT NULL,
   `id_status` int(255) NOT NULL,
   `keterangan` varchar(255) NOT NULL DEFAULT 'Barang siap untuk dikirim'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pengiriman`
 --
 
 INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_barang`, `id_status`, `keterangan`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-05 10:32:43', 1, 1, 'Barang sampai di gudang A'),
+(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-09 08:04:56', 1, 2, 'Barang sampai di gudang A'),
 (2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-05 10:33:01', 1, 1, 'Kurir resign wkwk'),
-(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-05 10:05:17', 2, 1, 'Barang siap untuk dikirim'),
+(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-09 08:06:25', 2, 1, 'Barang siapa ini?'),
 (6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
@@ -166,7 +169,7 @@ INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelangga
 CREATE TABLE `status` (
   `id_status` int(255) NOT NULL,
   `nama_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `status`
@@ -235,7 +238,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gudang`

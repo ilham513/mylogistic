@@ -157,6 +157,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<table class="table align-middle mb-0 bg-white">
 				  <tbody>
 					<tr>
+					  <td>Jenis Barang</td>
+					  <td>: <?=$pengiriman->jenis_barang?></td>
+					</tr>
+					<tr>
 					  <td>Harga</td>
 					  <td>: Rp <?=number_format($pengiriman->harga)?></td>
 					</tr>

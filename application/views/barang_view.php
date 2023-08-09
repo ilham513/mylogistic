@@ -97,6 +97,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<tr>
 					  <th>ID</th>
 					  <th>Nama Barang</th>
+					  <th>Jenis Barang</th>
                       <th>Actions</th>
 					  
 					</tr>
@@ -106,6 +107,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					<tr>
 					  <td><?= $barang->id_barang ?></td>
 					  <td><?= $barang->nama_barang ?></td>
+					  <td><?= $barang->jenis_barang ?></td>
 					  
 					  <td>
 						<a href="<?=site_url('barang/edit/'.$barang->id_barang)?>"><span class="fw-bold me-2 text-primary" onclick="return editchecked('<?=$barang->nama_barang?>');"><i class="fa-solid fa-pen-to-square"></i></span></a>

@@ -46,7 +46,7 @@ class Barang extends CI_Controller {
 		//varibel data barang
 		$data = array(
 			'nama_barang' => $this->input->post('nama_barang'),		
-					
+			'jenis_barang' => $this->input->post('jenis_barang')
 		);
 		
 		//input data barang
@@ -62,7 +62,6 @@ class Barang extends CI_Controller {
 		//ambil data kurir
 		$data['array_barang'] = $this->crud_model->mengambil_data_id('barang','id_barang',$id);
 		$data['obj_barang'] = $data['array_barang'][0];
-		// var_dump($data['obj_kurir']);die();
 		
 		//tampilkan view
 		$this->load->view('barang_edit',$data);
@@ -73,7 +72,7 @@ class Barang extends CI_Controller {
 		//varibel data edit
 		$data = array(
 			'nama_barang' => $this->input->post('nama_barang'),		
-			
+			'jenis_barang' => $this->input->post('jenis_barang')
 		);
 
 		//ubah data model
@@ -84,7 +83,7 @@ class Barang extends CI_Controller {
 	public function hapus($id)
 	{
 		//menghapus data model
-		$this->crud_model->menghapus_data_id('barang','id_barang,$id');
+		$this->crud_model->menghapus_data_id('barang','id_barang', $id);
 		var_dump($_POST);
 	}
 

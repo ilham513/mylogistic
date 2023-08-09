@@ -147,6 +147,16 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
+					<select name="id_status" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					  <option selected disabled>Pilih Status...</option>
+					  <?php foreach($array_status as $status): ?>
+					  <option <?=$status->id_status == $obj_pengiriman->id_status ? 'selected' : '';?> value="<?=$status->id_status?>"><?=$status->nama_status?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
 					<input name="keterangan" type="text" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
 				  </div>
 
