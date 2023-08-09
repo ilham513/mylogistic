@@ -92,7 +92,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_gudang" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					<select name="id_gudang" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> aria-label="Default select example">
 					  <option selected disabled>Pilih Lokasi Gudang...</option>
 					  <?php foreach($array_gudang as $gudang): ?>
 					  <option <?=$gudang->id_gudang == $obj_pengiriman->id_gudang ? 'selected' : '';?> value="<?=$gudang->id_gudang?>"><?=$gudang->lokasi_gudang?></option>
@@ -102,7 +102,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_kurir" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					<select name="id_kurir" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> aria-label="Default select example">
 					  <option selected disabled>Pilih Nama Kurir...</option>
 					  <?php foreach($array_kurir as $kurir): ?>
 					  <option <?=$kurir->id_kurir == $obj_pengiriman->id_kurir ? 'selected' : '';?> value="<?=$kurir->id_kurir?>"><?=$kurir->nama_kurir?></option>
@@ -112,7 +112,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_pelanggan" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					<select name="id_pelanggan" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> aria-label="Default select example">
 					  <option selected disabled>Pilih Nama Pengirim...</option>
 					  <?php foreach($array_pelanggan as $pelanggan): ?>
 					  <option <?=$pelanggan->id_pelanggan == $obj_pengiriman->id_pelanggan ? 'selected' : '';?> value="<?=$pelanggan->id_pelanggan?>"><?=$pelanggan->nama_pelanggan?></option>
@@ -122,32 +122,32 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="nama_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?>  type="text" id="form6Example3" value="<?=$obj_pengiriman->nama_penerima?>" placeholder="Nama Penerima" class="form-control" />
+					<input name="nama_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="text" id="form6Example3" value="<?=$obj_pengiriman->nama_penerima?>" placeholder="Nama Penerima" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="alamat_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?>  type="text" value="<?=$obj_pengiriman->alamat_penerima?>" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
+					<input name="alamat_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="text" value="<?=$obj_pengiriman->alamat_penerima?>" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="jumlah" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->jumlah?>" id="form6Example3" placeholder="Jumlah" class="form-control" />
+					<input name="jumlah" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> value="<?=$obj_pengiriman->jumlah?>" id="form6Example3" placeholder="Jumlah" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="berat" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->berat?>" id="form6Example3" placeholder="Berat" class="form-control" />
+					<input name="berat" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> value="<?=$obj_pengiriman->berat?>" id="form6Example3" placeholder="Berat" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="harga" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->harga?>" id="form6Example3" placeholder="Harga" class="form-control" />
+					<input name="harga" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> value="<?=$obj_pengiriman->harga?>" id="form6Example3" placeholder="Harga" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_status" class="form-select" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> aria-label="Default select example">
+					<select name="id_status" class="form-select" aria-label="Default select example">
 					  <option selected disabled>Pilih Status...</option>
 					  <?php foreach($array_status as $status): ?>
 					  <option <?=$status->id_status == $obj_pengiriman->id_status ? 'selected' : '';?> value="<?=$status->id_status?>"><?=$status->nama_status?></option>
@@ -157,7 +157,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="keterangan" type="text" <?= $this->session->userdata('role') == 'gudang' ? 'disabled' : ''; ?> value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
+					<input name="keterangan" type="text" value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
 				  </div>
 
 				  <!-- Submit button -->

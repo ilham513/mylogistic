@@ -107,7 +107,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Alamat Penerima</th>
 					  <th>Jumlah <i class="fa-solid fa-sort"></i></th>
 					  <th>Berat <i class="fa-solid fa-sort"></i></th>
-					  <th>Harga <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					</tr>
@@ -123,7 +122,6 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$laporan->alamat_penerima?></td>
 					  <td><?=$laporan->jumlah?></td>
 					  <td><?=$laporan->berat?></td>
-					  <td><?=number_format($laporan->harga)?></td>
 					  <td><?=$laporan->tanggal_pengiriman?></td>
 					  <td><?=$laporan->tanggal?></td>					  
 					</tr>

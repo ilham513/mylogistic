@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 10:13 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Aug 09, 2023 at 04:28 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,7 +31,7 @@ CREATE TABLE `akun` (
   `id` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `akun`
@@ -52,7 +51,7 @@ CREATE TABLE `barang` (
   `id_barang` int(255) NOT NULL,
   `nama_barang` varchar(255) NOT NULL,
   `jenis_barang` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `barang`
@@ -74,7 +73,7 @@ CREATE TABLE `gudang` (
   `id_gudang` int(255) NOT NULL,
   `lokasi_gudang` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gudang`
@@ -95,7 +94,7 @@ CREATE TABLE `kurir` (
   `nama_kurir` varchar(255) NOT NULL,
   `merek_kendaraan` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kurir`
@@ -118,7 +117,7 @@ CREATE TABLE `pelanggan` (
   `nama_pelanggan` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pelanggan`
@@ -146,9 +145,9 @@ CREATE TABLE `pengiriman` (
   `tanggal_pengiriman` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id_barang` int(255) NOT NULL,
-  `id_status` int(255) NOT NULL,
+  `id_status` int(255) NOT NULL DEFAULT 1,
   `keterangan` varchar(255) NOT NULL DEFAULT 'Barang siap untuk dikirim'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengiriman`
@@ -156,9 +155,10 @@ CREATE TABLE `pengiriman` (
 
 INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_barang`, `id_status`, `keterangan`) VALUES
 (1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-09 08:04:56', 1, 2, 'Barang sampai di gudang A'),
-(2, 1, 1, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-05 10:33:01', 1, 1, 'Kurir resign wkwk'),
+(2, 2, 3, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-09 14:23:57', 1, 2, 'Kurir resign wkwk'),
 (4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-09 08:06:25', 2, 1, 'Barang siapa ini?'),
-(6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim');
+(6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim'),
+(8, 1, 1, 1, '112', '231', 123, 123, 123, '2023-08-09 14:20:41', '2023-08-09 14:20:41', 1, 1, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,7 @@ INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelangga
 CREATE TABLE `status` (
   `id_status` int(255) NOT NULL,
   `nama_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `status`
@@ -262,7 +262,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `status`
