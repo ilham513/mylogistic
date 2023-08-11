@@ -145,7 +145,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="berat" type="number" id="form6Example3" placeholder="Berat" class="form-control" />
+					<input name="berat" type="number" id="form6Example3" placeholder="Berat (Minimal 11KG)" min="11" max="100" class="form-control" />
 				  </div>
 
 				  <!-- input -->
