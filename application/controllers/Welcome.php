@@ -33,7 +33,17 @@ class Welcome extends CI_Controller {
 		//tampilkan pengiriman
 		$data['array_pengiriman'] = $this->crud_model->mengambil_data_join_id('pengiriman','id_pengiriman',$id_pengiriman);
 
-		// var_dump($data);die();
+		if(count($data['array_pengiriman']) < 1){
+			echo '
+			<script>
+			  alert("nomor resi tidak ditemukan. silahkan tulis ulang!");
+			</script>
+			';
+			
+			redirect('/', 'refresh'); //redir	
+		}
+		
+		// var_dump($data['array_pengiriman']);die();
 		
 		//tampilkan view
 		$this->load->view('lacak',$data);

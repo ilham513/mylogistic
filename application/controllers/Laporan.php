@@ -163,10 +163,10 @@ class Laporan extends CI_Controller {
 		$pdf->Cell(10,15,'',0,1);
 		$pdf->SetFont('Times','B',9);
 		$pdf->Cell(5,7,'No',1,0,'C');
+		$pdf->Cell(25,7,'Tgl. Pengiriman' ,1,0,'C');
 		$pdf->Cell(25,7,'Kode Resi' ,1,0,'C');
 		$pdf->Cell(20,7,'Pengirim' ,1,0,'C');
 		$pdf->Cell(10,7,'Kurir' ,1,0,'C');
-		$pdf->Cell(25,7,'Tgl. Pengiriman' ,1,0,'C');
 		$pdf->Cell(20,7,'Penerima' ,1,0,'C');
 		$pdf->Cell(20,7,'Alamat' ,1,0,'C');
 		$pdf->Cell(15,7,'Jumlah' ,1,0,'C');
@@ -186,10 +186,10 @@ class Laporan extends CI_Controller {
 			$pdf->SetFont('Times','',10);
 
 			$pdf->Cell(5,6, $i+1 ,1,0);
+			$pdf->Cell(25,6, substr($obj_laporan->tanggal,0, 10),1,0);  					
 			$pdf->Cell(25,6, 'JKT0000000'.$obj_laporan->id_pengiriman,1,0);
 			$pdf->Cell(20,6, $obj_laporan->nama_pelanggan,1,0);  					
 			$pdf->Cell(10,6, $obj_laporan->nama_kurir,1,0);  					
-			$pdf->Cell(25,6, substr($obj_laporan->tanggal,0, 10),1,0);  					
 			$pdf->Cell(20,6, $obj_laporan->nama_penerima,1,0);  					
 			$pdf->Cell(20,6, $obj_laporan->alamat_penerima,1,0);  					
 			$pdf->Cell(15,6, $obj_laporan->jumlah,1,0);  					
