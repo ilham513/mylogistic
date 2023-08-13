@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 10:15 AM
+-- Generation Time: Aug 13, 2023 at 03:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -40,28 +40,6 @@ CREATE TABLE `akun` (
 INSERT INTO `akun` (`id`, `nama`, `password`) VALUES
 ('admin', 'Admin', '21232f297a57a5a743894a0e4a801fc3'),
 ('gudang', 'gudang', '202446dd1d6028084426867365b0c7a1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `barang`
---
-
-CREATE TABLE `barang` (
-  `id_barang` int(255) NOT NULL,
-  `nama_barang` varchar(255) NOT NULL,
-  `jenis_barang` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `barang`
---
-
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `jenis_barang`) VALUES
-(1, 'Barang AA', 'Jenis AA'),
-(2, 'Barang B', 'Jenis B'),
-(3, 'Barang C', 'Jenis C'),
-(4, 'Barand D', 'Jenis D');
 
 -- --------------------------------------------------------
 
@@ -103,7 +81,7 @@ CREATE TABLE `konfirmasi` (
 --
 
 INSERT INTO `konfirmasi` (`id_konfirmasi`, `id_pengiriman`, `id_gudang`, `id_kurir`, `id_status`, `keterangan`) VALUES
-(3, 9, 1, 3, 2, 'Sampe Kak');
+(7, 2, 2, 1, 2, 'ok');
 
 -- --------------------------------------------------------
 
@@ -161,12 +139,13 @@ CREATE TABLE `pengiriman` (
   `id_pelanggan` int(255) NOT NULL,
   `nama_penerima` varchar(255) NOT NULL,
   `alamat_penerima` varchar(255) NOT NULL,
+  `telp_penerima` varchar(255) NOT NULL,
+  `jenis_barang` varchar(255) NOT NULL,
   `jumlah` int(255) NOT NULL,
   `berat` int(255) NOT NULL,
   `harga` int(255) NOT NULL,
   `tanggal_pengiriman` timestamp NOT NULL DEFAULT current_timestamp(),
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `id_barang` int(255) NOT NULL,
   `id_status` int(255) NOT NULL DEFAULT 1,
   `keterangan` varchar(255) NOT NULL DEFAULT 'Barang siap untuk dikirim'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -175,13 +154,10 @@ CREATE TABLE `pengiriman` (
 -- Dumping data for table `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_barang`, `id_status`, `keterangan`) VALUES
-(1, 1, 3, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-13 08:00:08', 1, 2, 'Kelar'),
-(2, 2, 3, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-09 14:23:57', 1, 2, 'Kurir resign wkwk'),
-(4, 2, 5, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-13 07:27:34', 2, 2, 'Sudah sampai di tangan Budi'),
-(6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim'),
-(8, 1, 3, 1, '112', '231', 123, 123, 123, '2023-08-09 14:20:41', '2023-08-13 07:28:08', 1, 2, 'Barang sudah diterima Andi'),
-(9, 1, 1, 1, 'asd', 'qwe', 12, 13, 12, '2023-08-13 03:28:23', '2023-08-13 03:28:23', 2, 1, 'Barang siap untuk dikirim');
+INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `telp_penerima`, `jenis_barang`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_status`, `keterangan`) VALUES
+(1, 1, 5, 1, 'AA', 'AAA', '00009', 'Barang Kantor', 1, 11, 10, '2023-08-13 08:35:33', '2023-08-13 13:54:17', 2, 'Udah Sampe'),
+(2, 1, 3, 1, 'AAAAA', 'AAAAAA', '099998888', 'Barang Medis', 1, 11, 1, '2023-08-13 08:43:16', '2023-08-13 12:03:14', 1, 'Barang siap untuk dikirim'),
+(3, 1, 2, 1, 'zzz', 'zzzz', '088888', 'Gym', 1, 11, 1, '2023-08-13 11:59:26', '2023-08-13 11:59:26', 1, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
 
@@ -213,12 +189,6 @@ ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `barang`
---
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`);
-
---
 -- Indexes for table `gudang`
 --
 ALTER TABLE `gudang`
@@ -228,7 +198,8 @@ ALTER TABLE `gudang`
 -- Indexes for table `konfirmasi`
 --
 ALTER TABLE `konfirmasi`
-  ADD PRIMARY KEY (`id_konfirmasi`);
+  ADD PRIMARY KEY (`id_konfirmasi`),
+  ADD KEY `id_gudang` (`id_gudang`);
 
 --
 -- Indexes for table `kurir`
@@ -250,7 +221,6 @@ ALTER TABLE `pengiriman`
   ADD KEY `id_gudang` (`id_gudang`),
   ADD KEY `id_kurir` (`id_kurir`),
   ADD KEY `id_pelanggan` (`id_pelanggan`),
-  ADD KEY `id_barang` (`id_barang`),
   ADD KEY `id_status` (`id_status`);
 
 --
@@ -264,12 +234,6 @@ ALTER TABLE `status`
 --
 
 --
--- AUTO_INCREMENT for table `barang`
---
-ALTER TABLE `barang`
-  MODIFY `id_barang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
@@ -279,7 +243,7 @@ ALTER TABLE `gudang`
 -- AUTO_INCREMENT for table `konfirmasi`
 --
 ALTER TABLE `konfirmasi`
-  MODIFY `id_konfirmasi` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_konfirmasi` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kurir`
@@ -297,7 +261,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -310,13 +274,18 @@ ALTER TABLE `status`
 --
 
 --
+-- Constraints for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD CONSTRAINT `konfirmasi_ibfk_1` FOREIGN KEY (`id_gudang`) REFERENCES `gudang` (`id_gudang`);
+
+--
 -- Constraints for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
   ADD CONSTRAINT `pengiriman_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`),
   ADD CONSTRAINT `pengiriman_ibfk_2` FOREIGN KEY (`id_gudang`) REFERENCES `gudang` (`id_gudang`),
   ADD CONSTRAINT `pengiriman_ibfk_3` FOREIGN KEY (`id_kurir`) REFERENCES `kurir` (`id_kurir`),
-  ADD CONSTRAINT `pengiriman_ibfk_4` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
   ADD CONSTRAINT `pengiriman_ibfk_5` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`);
 COMMIT;
 

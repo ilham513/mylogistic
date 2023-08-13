@@ -132,6 +132,16 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
+					<input name="telp_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="text" value="<?=$obj_pengiriman->telp_penerima?>" id="form6Example3" placeholder="No Telpon Penerima" class="form-control" />
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="jenis_barang" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="text" value="<?=$obj_pengiriman->jenis_barang?>" id="form6Example3" placeholder="Jenis Barang" class="form-control" />
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
 					<input name="jumlah" type="number" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?> value="<?=$obj_pengiriman->jumlah?>" id="form6Example3" placeholder="Jumlah" class="form-control" />
 				  </div>
 
@@ -147,17 +157,12 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_status" class="form-select" aria-label="Default select example">
-					  <option selected disabled>Pilih Status...</option>
-					  <?php foreach($array_status as $status): ?>
-					  <option <?=$status->id_status == $obj_pengiriman->id_status ? 'selected' : '';?> value="<?=$status->id_status?>"><?=$status->nama_status?></option>
-					  <?php endforeach; ?>
-					</select>					
+					<input name="id_status" type="hidden" value="<?=$obj_pengiriman->id_status?>" id="form6Example3" placeholder="id Status" class="form-control" />
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="keterangan" type="text" value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
+					<input name="keterangan" type="hidden" value="<?=$obj_pengiriman->keterangan?>" id="form6Example3" placeholder="Keterangan" class="form-control" />
 				  </div>
 
 				  <!-- Submit button -->

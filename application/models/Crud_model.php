@@ -25,15 +25,14 @@ class Crud_model extends CI_Model{
 		return $query->result();
 	}
 
-	public function mengambil_data_join($nama_tabel)
+	public function mengambil_data_join($nama_tabel,$pel=true)
 	{
 		$this->db->select('*');
 		$this->db->from($nama_tabel);
-		$this->db->join('gudang', 'pengiriman.id_gudang = gudang.id_gudang');
-		$this->db->join('pelanggan', 'pengiriman.id_pelanggan = pelanggan.id_pelanggan');
-		$this->db->join('kurir', 'pengiriman.id_kurir = kurir.id_kurir');
-		$this->db->join('barang', 'pengiriman.id_barang = barang.id_barang');
-		$this->db->join('status', 'pengiriman.id_status = status.id_status');
+		$this->db->join('gudang', $nama_tabel.'.id_gudang = gudang.id_gudang');
+		if($pel){$this->db->join('pelanggan', $nama_tabel.'.id_pelanggan = pelanggan.id_pelanggan');}
+		$this->db->join('kurir', $nama_tabel.'.id_kurir = kurir.id_kurir');
+		$this->db->join('status', $nama_tabel.'.id_status = status.id_status');
 		$query = $this->db->get();
 		return $query->result();
 	}

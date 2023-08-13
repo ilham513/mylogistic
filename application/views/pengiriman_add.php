@@ -127,17 +127,17 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <div class="form-outline mb-4">
 					<input name="alamat_penerima"  type="text" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
 				  </div>
-
+				  
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<select name="id_barang" class="form-select" aria-label="Default select example">
-					  <option selected disabled>Pilih Nama Barang...</option>
-					  <?php foreach($array_barang as $barang): ?>
-					  <option value="<?=$barang->id_barang?>"><?=$barang->nama_barang?></option>
-					  <?php endforeach; ?>
-					</select>					
+					<input name="telp_penerima"  type="text" id="form6Example3" placeholder="No. Telpon Penerima" class="form-control" />
 				  </div>
-
+				  
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<input name="jenis_barang"  type="text" id="form6Example3" placeholder="Jenis Barang" class="form-control" />
+				  </div>
+				  
 				  <!-- input -->
 				  <div class="form-outline mb-4">
 					<input name="jumlah" type="number" id="form6Example3" placeholder="Jumlah" class="form-control" />

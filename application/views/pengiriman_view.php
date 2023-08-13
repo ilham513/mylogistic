@@ -84,7 +84,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 	 <!-- Section: Main chart -->
 		  <section class="mb-4">
-			<div class="card">
+			<div class="card table-responsive">
 			  <div class="card-header py-3">
 				<h5 class="mb-0"><strong>Pengiriman</strong></h5>
 			  </div>
@@ -101,11 +101,12 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<table class="table align-middle mb-0 bg-white">
 				  <thead class="bg-light">
 					<tr>
-					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
-					  <th>No Resi</th>
-					  <th>Nama Pengirim <i class="fa-solid fa-sort"></i></th>
-					  <th>Nama Penerima</th>
+					  <th>Tgl. Pengiriman <i class="fa-solid fa-sort"></i></th>
+					  <th>No Resi <i class="fa-solid fa-sort"></i></th>
+					  <th>Pengirim <i class="fa-solid fa-sort"></i></th>
+					  <th>Penerima <i class="fa-solid fa-sort"></i></th>
 					  <th>Alamat</th>
+					  <th>Telp.</th>
 					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					  <th>Status <i class="fa-solid fa-sort"></i></th>
@@ -121,6 +122,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->nama_pelanggan?></td>
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
+							  <td><?=$pengiriman->telp_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td><?=$pengiriman->nama_status?></td>
@@ -221,6 +223,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 		  <div class="modal-body">				
 				<table class="table align-middle mb-0 bg-white">
 				  <tbody>
+					<tr>
+					  <td>Nama Kurir</td>
+					  <td>: <?=$pengiriman->nama_kurir?></td>
+					</tr>
 					<tr>
 					  <td>Jenis Barang</td>
 					  <td>: <?=$pengiriman->jenis_barang?></td>

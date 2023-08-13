@@ -88,7 +88,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 			  <div class="card-header py-3">
 				<h5 class="mb-0"><strong>Laporan</strong></h5>
 			  </div>
-			  <div class="card-body">			  
+			  <div class="card-body table-responsive">			  
 				<figure class="text-end">
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
@@ -100,6 +100,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <thead class="bg-light">
 					<tr>
 					  <th></th>
+					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>No Resi <i class="fa-solid fa-sort"></i></th>
 					  <th>Nama Pengirim <i class="fa-solid fa-sort"></i></th>
 					  <th>Nama Kurir</th>
@@ -107,14 +108,15 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Alamat Penerima</th>
 					  <th>Jumlah <i class="fa-solid fa-sort"></i></th>
 					  <th>Berat <i class="fa-solid fa-sort"></i></th>
-					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
-					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
+					  <th>Harga <i class="fa-solid fa-sort"></i></th>
+					  <th>Status <i class="fa-solid fa-sort"></i></th>
 					</tr>
 				  </thead>
 				  <tbody>
 				  <?php foreach($array_laporan as $laporan): ?>
 					<tr>
 					  <td><input name="bulk_id[]" value="<?=$laporan->id_pengiriman?>" type="checkbox"/></td>
+					  <td><?=$laporan->tanggal_pengiriman?></td>
 					  <td>JKT0000000<?=$laporan->id_pengiriman?></td>
 					  <td><?=$laporan->nama_pelanggan?></td>
 					  <td><?=$laporan->nama_kurir?></td>
@@ -122,8 +124,8 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <td><?=$laporan->alamat_penerima?></td>
 					  <td><?=$laporan->jumlah?></td>
 					  <td><?=$laporan->berat?></td>
-					  <td><?=$laporan->tanggal_pengiriman?></td>
-					  <td><?=$laporan->tanggal?></td>					  
+					  <td><?=$laporan->harga?></td>
+					  <td><?=$laporan->nama_status?></td>
 					</tr>
 				  <?php endforeach; ?>
 				  </tbody>
