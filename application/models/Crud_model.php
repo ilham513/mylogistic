@@ -2,9 +2,15 @@
 
 class Crud_model extends CI_Model{
 
-	public function masukan_data($nama_tabel, $data)
+	public function masukan_data($nama_tabel, $data, $konfirmasi=null)
 	{	
 		$this->db->insert($nama_tabel, $data);
+		
+		if($konfirmasi != null){
+			//redirect
+			echo '<script>alert("Silahkan tunggu konfirmasi dari admin!")</script>';
+			redirect('/'.$konfirmasi, 'refresh'); //redir				
+		}
 
 		//redirect
 		echo '<script>alert("Data berhasil Diinput!")</script>';
@@ -83,15 +89,17 @@ class Crud_model extends CI_Model{
 		redirect('/'.$nama_tabel, 'refresh'); //redir				
 	}
 
-	public function menghapus_data_id($nama_tabel, $nama_colum, $id)
+	public function menghapus_data_id($nama_tabel, $nama_colum, $id, $redirect=true)
 	{
 	
 		$this->db->where($nama_colum, $id);
 		$this->db->delete($nama_tabel);
 
-		//redirect
-		echo '<script>alert("Data berhasil Dihapus!")</script>';
-		redirect('/'.$nama_tabel, 'refresh'); //redir				
+		if($redirect){
+			//redirect
+			echo '<script>alert("Data berhasil Dihapus!")</script>';
+			redirect('/'.$nama_tabel, 'refresh'); //redir							
+		}
 	}
 
 	public function menghitung_jumlah_row($nama_tabel)

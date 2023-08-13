@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 04:28 PM
+-- Generation Time: Aug 13, 2023 at 10:15 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -86,6 +86,28 @@ INSERT INTO `gudang` (`id_gudang`, `lokasi_gudang`, `no_telpon`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `konfirmasi`
+--
+
+CREATE TABLE `konfirmasi` (
+  `id_konfirmasi` int(255) NOT NULL,
+  `id_pengiriman` int(255) NOT NULL,
+  `id_gudang` int(255) NOT NULL,
+  `id_kurir` int(255) NOT NULL,
+  `id_status` int(255) NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `konfirmasi`
+--
+
+INSERT INTO `konfirmasi` (`id_konfirmasi`, `id_pengiriman`, `id_gudang`, `id_kurir`, `id_status`, `keterangan`) VALUES
+(3, 9, 1, 3, 2, 'Sampe Kak');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kurir`
 --
 
@@ -154,11 +176,12 @@ CREATE TABLE `pengiriman` (
 --
 
 INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_barang`, `id_status`, `keterangan`) VALUES
-(1, 2, 1, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-09 08:04:56', 1, 2, 'Barang sampai di gudang A'),
+(1, 1, 3, 1, 'Tuan A', 'Jalan A', 10, 1, 1000, '2023-08-04 13:03:03', '2023-08-13 08:00:08', 1, 2, 'Kelar'),
 (2, 2, 3, 1, 'Tuan BB', 'Jalan B', 1, 1, 10000, '2023-08-04 13:03:03', '2023-08-09 14:23:57', 1, 2, 'Kurir resign wkwk'),
-(4, 1, 1, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-09 08:06:25', 2, 1, 'Barang siapa ini?'),
+(4, 2, 5, 1, 'Cinta', 'Jl Cinta', 20, 2, 100, '2023-08-04 13:03:03', '2023-08-13 07:27:34', 2, 2, 'Sudah sampai di tangan Budi'),
 (6, 2, 3, 1, 'Nama A', 'Alamat A', 10, 10, 1000, '2023-08-05 09:42:35', '2023-08-05 10:05:20', 1, 2, 'Barang siap untuk dikirim'),
-(8, 1, 1, 1, '112', '231', 123, 123, 123, '2023-08-09 14:20:41', '2023-08-09 14:20:41', 1, 1, 'Barang siap untuk dikirim');
+(8, 1, 3, 1, '112', '231', 123, 123, 123, '2023-08-09 14:20:41', '2023-08-13 07:28:08', 1, 2, 'Barang sudah diterima Andi'),
+(9, 1, 1, 1, 'asd', 'qwe', 12, 13, 12, '2023-08-13 03:28:23', '2023-08-13 03:28:23', 2, 1, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
 
@@ -200,6 +223,12 @@ ALTER TABLE `barang`
 --
 ALTER TABLE `gudang`
   ADD PRIMARY KEY (`id_gudang`);
+
+--
+-- Indexes for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD PRIMARY KEY (`id_konfirmasi`);
 
 --
 -- Indexes for table `kurir`
@@ -247,10 +276,16 @@ ALTER TABLE `gudang`
   MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  MODIFY `id_konfirmasi` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -262,7 +297,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `status`

@@ -101,32 +101,30 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<table class="table align-middle mb-0 bg-white">
 				  <thead class="bg-light">
 					<tr>
+					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>No Resi</th>
 					  <th>Nama Pengirim <i class="fa-solid fa-sort"></i></th>
 					  <th>Nama Penerima</th>
 					  <th>Alamat</th>
 					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
-					  <th>Tanggal pengiriman <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
 					  <th>Status <i class="fa-solid fa-sort"></i></th>
-					  <th>Keterangan <i class="fa-solid fa-sort"></i></th>
-					  <th>Actions</th>
+					  <th <?= $this->session->userdata('role') == 'gudang' ? 'class="d-none"' : ''; ?>>Actions</th>
 					</tr>
 				  </thead>
 				  <tbody>
 				<form action="<?=site_url('laporan/bulk_pdf')?>" method="post">
 						  <?php foreach($array_pengiriman as $pengiriman): ?>
 							<tr>
+							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td data-mdb-toggle="modal" data-mdb-target="#exampleModal<?=$pengiriman->id_pengiriman?>"><a href="#">JKT0000000<?=$pengiriman->id_pengiriman?></a></td>
 							  <td><?=$pengiriman->nama_pelanggan?></td>
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
-							  <td><?=$pengiriman->tanggal_pengiriman?></td>
 							  <td><?=$pengiriman->tanggal?></td>
 							  <td><?=$pengiriman->nama_status?></td>
-							  <td><?=$pengiriman->keterangan?></td>
-							  <td>
+							  <td <?= $this->session->userdata('role') == 'gudang' ? 'class="d-none"' : ''; ?>>
 								<a href="<?=site_url('pengiriman/edit/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-primary"><i class="fa-solid fa-pen-to-square"></i></span></a>
 								<a href="<?=site_url('pengiriman/hapus/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold me-2 text-danger"><i class="fa-solid fa-trash"></i></span></a>
 								<a href="<?=site_url('laporan/pdf/'.$pengiriman->id_pengiriman)?>"><span class="fw-bold text-secondary"><i class="fa-solid fa-print"></i></span></a>
@@ -139,6 +137,73 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				</form>
 				
 			  </div>
+			</div>
+			
+			<div class="card <?= $this->session->userdata('role') != 'gudang' ? 'd-none' : ''; ?>">
+			  <div class="card-header py-3">
+				<h5 class="mb-0"><strong>Ubah Status</strong></h5>
+			  </div>
+				<div class="card-body">
+	 <!-- Section: Main chart -->
+		  <section class="mb-4">
+			<div class="card">
+			  <div class="card-body">
+				<form action="<?=site_url('pengiriman/konfirmasi_go')?>" method="post">
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="id_pengiriman" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Nomor Resi...</option>
+					  <?php foreach($array_pengiriman as $pengiriman): ?>
+					  <option value="<?=$pengiriman->id_pengiriman?>">JKT0000000<?=$pengiriman->id_pengiriman?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+				
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="id_gudang" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Lokasi Gudang...</option>
+					  <?php foreach($array_gudang as $gudang): ?>
+					  <option value="<?=$gudang->id_gudang?>"><?=$gudang->lokasi_gudang?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="id_kurir" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Nama Kurir...</option>
+					  <?php foreach($array_kurir as $kurir): ?>
+					  <option value="<?=$kurir->id_kurir?>"><?=$kurir->nama_kurir?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="id_status" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Status...</option>
+					  <?php foreach($array_status as $status): ?>
+					  <option value="<?=$status->id_status?>"><?=$status->nama_status?></option>
+					  <?php endforeach; ?>
+					</select>					
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-group mb-4">
+					<label for="exampleFormControlTextarea1">Keterangan</label>
+					<textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				  </div>
+				  
+				  <!-- Submit button -->
+				  <button type="submit" class="btn btn-success btn-block mb-4">Kirim</button>
+				</form>				
+				
+			  </div>
+			</div>
+		  </section>
+	  <!-- Section: Main chart -->				
+				</div>
 			</div>
 		  </section>
 	  <!-- Section: Main chart -->

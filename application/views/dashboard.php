@@ -143,12 +143,18 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               </div>
             </div>
           </div>
+		  
+			<div class="alert alert-warning <?= $jumlah_konfirmasi < 1 ? 'd-none' : ''; ?>" role="alert">
+				<a href="<?=site_url('pengiriman/konfirmasi')?>">Ada <?=$jumlah_konfirmasi?> perubahan status yang perlu dikonfirmasi!</a>
+			</div>
         </div>
       </section>
       <!--Section: Minimal statistics cards-->
     </div>
   </main>
   <!--Main layout-->
+  
+  
 
   <!-- MDB -->
   <script type="text/javascript" src="<?=base_url()?>js/mdb.min.js"></script>

@@ -26,6 +26,9 @@ class Pengiriman extends CI_Controller {
 		
 		//ambil data
 		$data['array_pengiriman'] = $this->crud_model->mengambil_data_join('pengiriman');
+		$data['array_gudang'] = $this->crud_model->mengambil_data('gudang');
+		$data['array_kurir'] = $this->crud_model->mengambil_data('kurir');
+		$data['array_status'] = $this->crud_model->mengambil_data('status');
 		
 		// var_dump($data['array_pengiriman']); die();
 		
@@ -111,6 +114,72 @@ class Pengiriman extends CI_Controller {
 		$this->crud_model->mengubah_data_id('pengiriman', $data,'id_pengiriman',$this->input->post('id_pengiriman'));
 		var_dump($_POST);
 	}
+
+	public function konfirmasi()
+	{
+		//variabel nama
+		$data['nama'] = $this->data['nama'];
+		$data['sidebar'] = $this->data['sidebar'];
+		
+		//ambil data
+		$data['array_konfirmasi'] = $this->crud_model->mengambil_data('konfirmasi');
+		
+		// var_dump($data['array_pengiriman']); die();
+		
+		//tampilkan view
+		$this->load->view('konfirmasi_view',$data);
+	}
+
+	public function konfirmasi_go()
+	{
+		//ambil data yg akan diedit
+		$data = array(
+			'id_pengiriman' => $this->input->post('id_pengiriman'),		
+			'id_gudang' => $this->input->post('id_gudang'),		
+			'id_kurir' => $this->input->post('id_kurir'),	
+			'id_status' => $this->input->post('id_status'),	
+			'keterangan' => $this->input->post('keterangan')	
+		);
+
+		//masukan data
+		$this->crud_model->masukan_data('konfirmasi', $data, 'pengiriman'); 
+	}
+
+	public function terima_go($id_konfirmasi)
+	{
+		//ambil data id
+		$data['array_konfirmasi'] = $this->crud_model->mengambil_data_id('konfirmasi','id_konfirmasi',$id_konfirmasi);
+		$array_konfirmasi = $data['array_konfirmasi'][0];
+		
+		//ambil data id
+		$data['array_pengiriman'] = $this->crud_model->mengambil_data_id('pengiriman','id_pengiriman',$array_konfirmasi->id_pengiriman);
+		$array_pengiriman = $data['array_pengiriman'][0];
+		
+		// var_dump($array_pengiriman); die();
+		
+		//ubah data berdasarkan konfirmasi
+		$data = array(
+			'id_pengiriman' => $array_konfirmasi->id_pengiriman,		
+			'id_gudang' => $array_konfirmasi->id_gudang,		
+			'id_kurir' => $array_konfirmasi->id_kurir,		
+			'id_pelanggan' => $array_pengiriman->id_pelanggan,		
+			'nama_penerima' => $array_pengiriman->nama_penerima,		
+			'alamat_penerima' => $array_pengiriman->alamat_penerima,		
+			'jumlah' => $array_pengiriman->jumlah,		
+			'berat' => $array_pengiriman->berat,		
+			'harga' => $array_pengiriman->harga,	
+			'id_status' => $array_konfirmasi->id_status,	
+			'keterangan' => $array_konfirmasi->keterangan	
+		);
+		
+		//hapus data konfirmasi
+		$this->crud_model->menghapus_data_id('konfirmasi','id_konfirmasi',$id_konfirmasi,false);		
+
+		//load model ubah data
+		$this->crud_model->mengubah_data_id('pengiriman', $data,'id_pengiriman',$array_konfirmasi->id_pengiriman);
+		var_dump($_POST);
+	}
+
 
 	public function hapus($id)
 	{
