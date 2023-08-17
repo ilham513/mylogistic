@@ -185,7 +185,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				$tgl1 = new DateTime(date('Y-m-d', strtotime($pengiriman->tanggal_pengiriman))); 
 				$jarak = $tgl2->diff($tgl1);			
 			?>
-			<div class="alert alert-danger <?=$jarak->d > 3 AND $pengiriman->id_status <2 ? '' : 'd-none';?>" role="alert">
+			<div class="alert alert-danger <?=$jarak->d > 3 && $pengiriman->id_status <2 ? '' : 'd-none';?>" role="alert">
 			  <?php
 				echo 'Nomor Resi: JKT0000000'.$pengiriman->id_pengiriman.' sudah melebihi batas pengiriman, Harap hubungi kurir '.$pengiriman->nama_kurir.'!';	
 			  ?>

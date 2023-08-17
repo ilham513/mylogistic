@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 02:46 AM
+-- Generation Time: Aug 17, 2023 at 02:59 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -156,7 +156,7 @@ CREATE TABLE `pengiriman` (
 --
 
 INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `kota_tujuan`, `telp_penerima`, `jenis_barang`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_status`, `keterangan`) VALUES
-(5, 1, 3, 1, 'AAAA', 'AAAA', 1, '11111', 'AAAA', 11111, 11, 111111, '2023-07-31 23:32:37', '2023-08-17 00:20:33', 1, 'Barang siap untuk dikirim'),
+(5, 1, 3, 1, 'AAAA', 'AAAA', 1, '11111', 'AAAA', 11111, 11, 111111, '2023-07-31 23:32:37', '2023-08-17 00:58:43', 1, 'Barang siap untuk dikirim'),
 (6, 2, 2, 1, 'BBB', 'BBBB', 2, '22222', 'BBBB', 2222, 22, 22222, '2023-08-16 23:33:40', '2023-08-16 23:33:40', 1, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
