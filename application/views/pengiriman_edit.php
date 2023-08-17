@@ -122,6 +122,11 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
+					<input name="tanggal_pengiriman" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="datetime-local" id="form6Example3" value="<?=$obj_pengiriman->tanggal_pengiriman?>" placeholder="Nama Penerima" class="form-control" />
+				  </div>
+
+				  <!-- input -->
+				  <div class="form-outline mb-4">
 					<input name="nama_penerima" <?= $this->session->userdata('role') == 'gudang' ? 'readonly' : ''; ?>  type="text" id="form6Example3" value="<?=$obj_pengiriman->nama_penerima?>" placeholder="Nama Penerima" class="form-control" />
 				  </div>
 

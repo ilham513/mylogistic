@@ -91,13 +91,13 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				<form action="<?=site_url('gudang/add_go')?>" method="post">
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="lokasi_gudang" type="text" id="form6Example3" class="form-control" />
+					<input required name="lokasi_gudang" type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">Lokasi Gudang</label>
 				  </div>
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="no_telpon"  type="text" id="form6Example3" class="form-control" />
+					<input required name="no_telpon"  type="text" id="form6Example3" class="form-control" />
 					<label class="form-label" for="form6Example3">No Telpon</label>
 				  </div>
 

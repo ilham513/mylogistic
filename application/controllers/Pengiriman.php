@@ -101,6 +101,7 @@ class Pengiriman extends CI_Controller {
 			'id_pengiriman' => $this->input->post('id_pengiriman'),		
 			'id_gudang' => $this->input->post('id_gudang'),		
 			'id_kurir' => $this->input->post('id_kurir'),		
+			'tanggal_pengiriman' => $this->input->post('tanggal_pengiriman'),		
 			'id_pelanggan' => $this->input->post('id_pelanggan'),		
 			'nama_penerima' => $this->input->post('nama_penerima'),		
 			'alamat_penerima' => $this->input->post('alamat_penerima'),		

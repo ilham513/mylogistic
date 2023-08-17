@@ -132,11 +132,21 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <div class="form-outline mb-4">
 					<select name="kota_tujuan" class="form-select" aria-label="Default select example">
 					  <option selected disabled>Pilih Kota Tujuan...</option>
-					  <option value="1">Jakarta (Estimasi 2 Hari | Ongkir: 20.000)</option>
-					  <option value="2">Bogor (Estimasi 3 Hari | Ongkir: 25.000)</option>
-					  <option value="2">Depok(Estimasi 3 Hari | Ongkir: 25.000)</option>
-					  <option value="2">Tanggerang (Estimasi 3 Hari | Ongkir: 25.000)</option>
-					  <option value="1">Bekasi (Estimasi 2 Hari | Ongkir: 20.000)</option>
+					  <option value="Jakarta">Jakarta</option>
+					  <option value="Bogor">Bogor</option>
+					  <option value="Depok">Depok</option>
+					  <option value="Tanggerang">Tanggerang</option>
+					  <option value="Bekasi">Bekasi</option>
+					</select>					
+				  </div>
+				  
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="jenis_layanan" onchange="myFunction(event)" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Jenis Layanan...</option>
+					  <option value="20000">EKONOMIS (4-7 hari)</option>
+					  <option value="25000">REGULER (2-3 hari)</option>
+					  <option value="35000">CEPAT (1 hari)</option>
 					</select>					
 				  </div>
 				  
@@ -162,7 +172,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 
 				  <!-- input -->
 				  <div class="form-outline mb-4">
-					<input name="harga" type="number" id="form6Example3" placeholder="Harga" class="form-control" />
+					<input name="harga" type="number" id="harga" placeholder="Harga" class="form-control" />
 				  </div>
 
 				  <!-- Submit button -->
@@ -185,6 +195,10 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
   
  	<script>  
 		menyalakan_sidenav('pengiriman');
+
+		function myFunction(e) {
+			document.getElementById("harga").value = e.target.value
+		}		
 	</script>
  
 </body>

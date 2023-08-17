@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 02:59 AM
+-- Generation Time: Aug 17, 2023 at 05:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -139,7 +139,7 @@ CREATE TABLE `pengiriman` (
   `id_pelanggan` int(255) NOT NULL,
   `nama_penerima` varchar(255) NOT NULL,
   `alamat_penerima` varchar(255) NOT NULL,
-  `kota_tujuan` int(255) NOT NULL,
+  `kota_tujuan` varchar(255) NOT NULL,
   `telp_penerima` varchar(255) NOT NULL,
   `jenis_barang` varchar(255) NOT NULL,
   `jumlah` int(255) NOT NULL,
@@ -156,8 +156,8 @@ CREATE TABLE `pengiriman` (
 --
 
 INSERT INTO `pengiriman` (`id_pengiriman`, `id_gudang`, `id_kurir`, `id_pelanggan`, `nama_penerima`, `alamat_penerima`, `kota_tujuan`, `telp_penerima`, `jenis_barang`, `jumlah`, `berat`, `harga`, `tanggal_pengiriman`, `tanggal`, `id_status`, `keterangan`) VALUES
-(5, 1, 3, 1, 'AAAA', 'AAAA', 1, '11111', 'AAAA', 11111, 11, 111111, '2023-07-31 23:32:37', '2023-08-17 00:58:43', 1, 'Barang siap untuk dikirim'),
-(6, 2, 2, 1, 'BBB', 'BBBB', 2, '22222', 'BBBB', 2222, 22, 22222, '2023-08-16 23:33:40', '2023-08-16 23:33:40', 1, 'Barang siap untuk dikirim');
+(1, 1, 3, 1, 'A', 'A', 'Jakarta', '11111', 'A', 11, 11, 20000, '2023-08-17 15:06:42', '2023-08-17 15:06:42', 1, 'Barang siap untuk dikirim'),
+(2, 2, 5, 1, 'B', 'BBBB', 'Bogor', '22222', 'BBB', 22, 22, 25000, '2023-07-17 15:07:29', '2023-08-17 15:07:42', 1, 'Barang siap untuk dikirim');
 
 -- --------------------------------------------------------
 
@@ -237,7 +237,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
-  MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_gudang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `konfirmasi`
@@ -249,7 +249,7 @@ ALTER TABLE `konfirmasi`
 -- AUTO_INCREMENT for table `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kurir` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -261,7 +261,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pengiriman` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `status`
