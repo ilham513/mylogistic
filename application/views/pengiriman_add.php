@@ -127,6 +127,18 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 				  <div class="form-outline mb-4">
 					<input name="alamat_penerima"  type="text" id="form6Example3" placeholder="Alamat Penerima" class="form-control" />
 				  </div>
+			
+				  <!-- input -->
+				  <div class="form-outline mb-4">
+					<select name="kota_tujuan" class="form-select" aria-label="Default select example">
+					  <option selected disabled>Pilih Kota Tujuan...</option>
+					  <option value="1">Jakarta (Estimasi 2 Hari | Ongkir: 20.000)</option>
+					  <option value="2">Bogor (Estimasi 3 Hari | Ongkir: 25.000)</option>
+					  <option value="2">Depok(Estimasi 3 Hari | Ongkir: 25.000)</option>
+					  <option value="2">Tanggerang (Estimasi 3 Hari | Ongkir: 25.000)</option>
+					  <option value="1">Bekasi (Estimasi 2 Hari | Ongkir: 20.000)</option>
+					</select>					
+				  </div>
 				  
 				  <!-- input -->
 				  <div class="form-outline mb-4">

@@ -143,10 +143,56 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
               </div>
             </div>
           </div>
+
+<div class="bg-white mb-4">
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+      datasets: [{
+        label: '# Jumlah Pengiriman',
+        data: [0,0,0,0,0,0,0,<?php foreach($grafik as $grafik){echo $grafik->count;} ?>,0,0,0,0],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
 		  
-			<div class="alert alert-warning <?= $jumlah_konfirmasi < 1 ? 'd-none' : ''; ?>" role="alert">
+			<div class="alert alert-warning <?= $this->session->userdata('role') == 'gudang' ? 'd-none' : ''; ?> <?= $jumlah_konfirmasi < 1 ? 'd-none' : ''; ?>" role="alert">
 				<a href="<?=site_url('status')?>">Ada <?=$jumlah_konfirmasi?> perubahan status yang perlu dikonfirmasi!</a>
 			</div>
+			<?php
+			$tgl2 = new DateTime(date("Y-m-d"));
+			
+			foreach($array_pengiriman as $pengiriman): ?>
+			<?php
+				$tgl1 = new DateTime(date('Y-m-d', strtotime($pengiriman->tanggal_pengiriman))); 
+				$jarak = $tgl2->diff($tgl1);			
+			?>
+			<div class="alert alert-danger <?=$jarak->d > 3 AND $pengiriman->id_status <2 ? '' : 'd-none';?>" role="alert">
+			  <?php
+				echo 'Nomor Resi: JKT0000000'.$pengiriman->id_pengiriman.' sudah melebihi batas pengiriman, Harap hubungi kurir '.$pengiriman->nama_kurir.'!';	
+			  ?>
+			</div>
+			<?php endforeach; 
+			
+			?>
         </div>
       </section>
       <!--Section: Minimal statistics cards-->

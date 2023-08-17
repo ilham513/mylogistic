@@ -22,8 +22,10 @@ class Admin extends CI_Controller {
 		$data['jumlah_pelanggan'] = $this->crud_model->menghitung_jumlah_row('pelanggan');
 		$data['jumlah_gudang'] = $this->crud_model->menghitung_jumlah_row('gudang');
 		$data['jumlah_konfirmasi'] = $this->crud_model->menghitung_jumlah_row('konfirmasi');
+		$data['grafik'] = $this->crud_model->ambil_grafik('pengiriman');
+		$data['array_pengiriman'] = $this->crud_model->mengambil_data_join('pengiriman');
 		
-		// var_dump($data['jumlah_pengiriman']);die();
+		// var_dump($data['grafik']);die();
 		
 		//tampilkan view
 		$this->load->view('dashboard',$data);

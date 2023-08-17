@@ -108,6 +108,21 @@ class Crud_model extends CI_Model{
 		return $query->result_id->num_rows;
 		// var_dump($query->result_id->num_rows);die();		
 	}
+
+	public function ambil_grafik($nama_tabel)
+	{
+		$query = $this->db->query("
+		SELECT
+		  DATE_FORMAT(tanggal_pengiriman, '%m') AS tanggal_pengiriman,
+		  COUNT(id_pengiriman) AS count
+		FROM pengiriman
+		GROUP BY
+		  MONTH(tanggal_pengiriman);		
+		");
+
+		return $query->result();
+		// var_dump($query->result());die();		
+	}
 	
 	public function tanggal_indo($tanggal, $cetak_hari = false){
 		$hari = array ( 1 =>    'Senin',
