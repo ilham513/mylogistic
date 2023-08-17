@@ -107,6 +107,7 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 					  <th>Penerima <i class="fa-solid fa-sort"></i></th>
 					  <th>Alamat</th>
 					  <th>Kota Tujuan</th>
+					  <th>Jenis Pengiriman</th>
 					  <th>Telp.</th>
 					  <th>Lokasi Terakhir <i class="fa-solid fa-sort"></i></th>
 					  <th>Tanggal diperbarui <i class="fa-solid fa-sort"></i></th>
@@ -124,6 +125,23 @@ background: linear-gradient(94deg, rgba(22,58,118,1) 0%, rgba(34,92,187,1) 100%)
 							  <td><?=$pengiriman->nama_penerima?></td>
 							  <td><?=$pengiriman->alamat_penerima?></td>
 							  <td><?=$pengiriman->kota_tujuan?></td>
+							  <td>
+							  <?php
+								switch ($pengiriman->harga) {
+								  case "20000":
+									echo "Ekonomis";
+									break;
+								  case "25000":
+									echo "Reguler";
+									break;
+								  case "35000":
+									echo "Cepat";
+									break;
+								  default:
+									echo "Error!";
+								}
+							  ?>
+							  </td>
 							  <td><?=$pengiriman->telp_penerima?></td>
 							  <td><?=$pengiriman->lokasi_gudang?></td>
 							  <td><?=$pengiriman->tanggal?></td>
